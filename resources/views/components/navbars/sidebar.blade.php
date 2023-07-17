@@ -52,7 +52,7 @@
                 <a class="nav-link text-white {{ $activePage == 'category' ? ' active bg-gradient-primary' : '' }} "
                     href="{{route('getAddCategory') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">table_view</i>
+                        <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center"></i>
                     </div>
                     <span class="nav-link-text ms-1">Category</span>
                 </a>

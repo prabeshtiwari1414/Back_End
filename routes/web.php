@@ -13,13 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+ 
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserProfile;
             
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
@@ -69,4 +70,4 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('user-profile');
 });
 Route::get('/category', [CategoryController::class, 'getAddCategory'])->name('getAddCategory');
-Route::post('/addcategory', [CategoryController::class, 'postAddCategory'])->name('postAddCategory');
+Route::post('/addprofile', [UserProfileController::class, 'postUserProfile'])->name('postUserProfile');

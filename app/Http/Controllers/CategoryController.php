@@ -23,6 +23,6 @@ class CategoryController extends Controller
         $category->photo=$photo;
         $category->details=$details;
         $category->save();
-
+       dd('summitted');
     }
 }
