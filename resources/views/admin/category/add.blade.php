@@ -54,7 +54,7 @@
                             </div>
                         </div>
                         @endif
-                        <form method='POST' action="{{route('postAddCategory')}}">
+                        <form method='POST' action="{{route('postAddCategory')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
 

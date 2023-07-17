@@ -70,4 +70,4 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('user-profile');
 });
 Route::get('/category', [CategoryController::class, 'getAddCategory'])->name('getAddCategory');
-Route::post('/addprofile', [UserProfileController::class, 'postUserProfile'])->name('postUserProfile');
+Route::post('/addcategory', [CategoryController::class, 'postAddCategory'])->name('postAddCategory');
