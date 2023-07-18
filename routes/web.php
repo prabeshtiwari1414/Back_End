@@ -20,6 +20,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\UserProfile;
             
 
@@ -71,3 +72,5 @@ Route::group(['middleware' => 'auth'], function () {
 });
 Route::get('/category', [CategoryController::class, 'getAddCategory'])->name('getAddCategory');
 Route::post('/addcategory', [CategoryController::class, 'postAddCategory'])->name('postAddCategory');
+Route::get('/gallery', [GalleryController::class, 'getAddGallery'])->name('getAddGallery');
+Route::post('/addgallery', [GalleryController::class, 'postAddGallery'])->name('postAddGallery');
