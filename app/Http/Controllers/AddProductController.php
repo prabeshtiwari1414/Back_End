@@ -23,7 +23,7 @@ class AddProductController extends Controller
             //generate unique name for photo
             $time=md5(time()).'.'.$photo->getClientOriginalExtension();
              // to move photo into folder
-            $photo->move('site/uploads/gallery/',$time);
+            $photo->move('site/uploads/product/',$time);
             
              // dd($photo);
         }
