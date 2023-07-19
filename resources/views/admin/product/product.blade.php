@@ -1,9 +1,9 @@
 <x-layout bodyClass="g-sidenav-show bg-gray-200">
 
-    <x-navbars.sidebar activePage="gallery"></x-navbars.sidebar>
+    <x-navbars.sidebar activePage="addproduct"></x-navbars.sidebar>
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage='Gallery'></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage='Category'></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid px-2 px-md-4">
             <div class="page-header min-height-300 border-radius-xl mt-4"
@@ -21,9 +21,9 @@
                     <div class="col-auto my-auto">
                         <div class="h-100">
                             <h5 class="mb-1">
-                                Add Gallery
+                                Add Product
                             </h5>
-                            
+
                         </div>
                     </div>
 
@@ -55,13 +55,28 @@
 
                         </div>
                         @endif
-                        <form method='POST' action="{{route('postAddGallery')}}" enctype="multipart/form-data">
+                        <form method='POST' action="{{route('postAddProduct')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
 
                                 <div class="mb-3 col-md-6">
-                                    <label class="form-label">Title</label>
-                                    <input type="text" name="title" class="form-control border border-2 p-2">
+                                    <label class="form-label">Category</label>
+                                    <input type="text" name="category" class="form-control border border-2 p-2">
+                                    @error('title')
+                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    @enderror
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Product Title</label>
+                                    <input type="text" name="product_title" class="form-control border border-2 p-2">
+                                    @error('title')
+                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    @enderror
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Product Cost</label>
+                                    <input type="text" name="product_cost" class="form-control border border-2 p-2"
+                                        value="Rs.">
                                     @error('title')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -76,11 +91,36 @@
                                 </div>
 
 
+                                <div class="mb-3 col-md-12">
+                                    <label for="floatingTextarea2">Product Details</label>
+                                    <textarea class="form-control border border-2 p-2"
+                                        placeholder=" Say something about your add product" id="floatingTextarea2"
+                                        name="product_details" rows="4"
+                                        cols="50">{{ old('about', auth()->user()->about) }}</textarea>
+                                    @error('')
+                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    @enderror
+                                </div>
+
+
+                                <div class="mb-3 col-md-12">
+                                    <label class="form-label">Product Status</label> <br>
+                                    <input type="radio" id="product_status" name="product_status" value="show">
+                                    <label for="product_status">Show</label><br>
+                                    <input type="radio" id="product_status" name="product_status" value="hide">
+                                    <label for=" product_status">Hide</label><br>
+
+                                    @error('photo')
+                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    @enderror
+                                </div>
+
+
 
 
                             </div>
 
-                            <button type="submit" class="btn bg-gradient-dark">Add</button>
+                            <button type="submit" class="btn bg-gradient-dark">Submit</button>
                         </form>
 
                     </div>
