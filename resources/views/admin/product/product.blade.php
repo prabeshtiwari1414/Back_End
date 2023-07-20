@@ -61,14 +61,15 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Category</label>
-                                    <input type="text" name="category" class="form-control border border-2 p-2">
+                                    <input type="text" name="category" class="form-control border border-2 p-2" require>
                                     @error('title')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Product Title</label>
-                                    <input type="text" name="product_title" class="form-control border border-2 p-2">
+                                    <input type="text" name="product_title" class="form-control border border-2 p-2"
+                                        require>
                                     @error('title')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -76,7 +77,7 @@
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Product Cost</label>
                                     <input type="text" name="product_cost" class="form-control border border-2 p-2"
-                                        value="Rs.">
+                                        require value="Rs.">
                                     @error('title')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -84,7 +85,7 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Photo</label>
-                                    <input type="file" name="photo" class="form-control border border-2 p-2">
+                                    <input type="file" name="photo" class="form-control border border-2 p-2" require>
                                     @error('photo')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -93,7 +94,7 @@
 
                                 <div class="mb-3 col-md-12">
                                     <label for="floatingTextarea2">Product Details</label>
-                                    <textarea class="form-control border border-2 p-2"
+                                    <textarea class="form-control border border-2 p-2" require
                                         placeholder=" Say something about your add product" id="floatingTextarea2"
                                         name="product_details" rows="4"
                                         cols="50">{{ old('about', auth()->user()->about) }}</textarea>
