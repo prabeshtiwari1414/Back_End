@@ -23,6 +23,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\UserProfile;
 use App\Http\Controllers\AddProductController;
+use App\Http\Controllers\MediaController;
 
             
 
@@ -73,8 +74,11 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('user-profile');
 });
 Route::get('/category', [CategoryController::class, 'getAddCategory'])->name('getAddCategory');
+Route::get('/manage/category', [CategoryController::class, 'getManageCategroy'])->name('getManageCategroy');
 Route::post('/addcategory', [CategoryController::class, 'postAddCategory'])->name('postAddCategory');
 Route::get('/gallery', [GalleryController::class, 'getAddGallery'])->name('getAddGallery');
 Route::post('/addgallery', [GalleryController::class, 'postAddGallery'])->name('postAddGallery');
 Route::get('/product', [AddProductController::class, 'getAddProduct'])->name('getAddProduct');
 Route::post('/addproduct', [AddProductController::class, 'postAddProduct'])->name('postAddProduct');
+Route::get('/media', [MediaController::class, 'getAddMedia'])->name('getAddMedia');
+Route::post('/addmedia', [MediaController::class, 'postAddMedia'])->name('postAddMedia');

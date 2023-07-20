@@ -1,9 +1,9 @@
 <x-layout bodyClass="g-sidenav-show bg-gray-200">
 
-    <x-navbars.sidebar activePage="category"></x-navbars.sidebar>
+    <x-navbars.sidebar activePage="media"></x-navbars.sidebar>
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage='Category'></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage='Media'></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid px-2 px-md-4">
             <div class="page-header min-height-300 border-radius-xl mt-4"
@@ -21,7 +21,7 @@
                     <div class="col-auto my-auto">
                         <div class="h-100">
                             <h5 class="mb-1">
-                                Add Category
+                                Add Media
                             </h5>
 
                         </div>
@@ -55,21 +55,31 @@
 
                         </div>
                         @endif
-                        <form method='POST' action="{{route('postAddCategory')}}" enctype="multipart/form-data">
+                        <form method='POST' action="{{route('postAddMedia')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
 
                                 <div class="mb-3 col-md-6">
-                                    <label class="form-label">Title</label>
-                                    <input type="text" name="title" class="form-control border border-2 p-2" required>
+                                    <label class="form-label">Social Media Name</label>
+                                    <input type="text" name="media_name" class="form-control border border-2 p-2"
+                                        required>
+                                    @error('title')
+                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    @enderror
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Social Media Link</label>
+                                    <input type="url" name="media_url" class="form-control border border-2 p-2"
+                                        required>
                                     @error('title')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
                                 </div>
 
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label">Photo</label>
-                                    <input type="file" name="photo" class="form-control border border-2 p-2">
+                                <div class="mb-3 col-md-12">
+                                    <label class="form-label">Social Media Icon</label>
+                                    <input type="file" name="media_icon" class="form-control border border-2 p-2"
+                                        required>
                                     @error('photo')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -77,19 +87,10 @@
 
 
 
-                                <div class="mb-3 col-md-12">
-                                    <label for="floatingTextarea2">Details</label>
-                                    <textarea class="form-control border border-2 p-2"
-                                        placeholder=" Say something about your add category" id="floatingTextarea2"
-                                        name="details" rows="4" cols="50"
-                                        required>{{ old('about', auth()->user()->about) }}</textarea>
-                                    @error('')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
-                                    @enderror
-                                </div>
+
                             </div>
 
-                            <button type="submit" class="btn bg-gradient-dark">Submit</button>
+                            <button type="submit" class="btn bg-gradient-dark">Add</button>
                         </form>
 
                     </div>

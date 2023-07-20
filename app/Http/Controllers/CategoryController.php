@@ -13,6 +13,14 @@ class CategoryController extends Controller
         //<!--dd('hello');-->
         return view('admin.category.add');
     }
+    public function getManageCategroy()
+    {
+        //<!--dd('hello');-->
+       
+        return view('admin.category.manage');
+    }
+    
+
     public function postAddCategory(Request $request)
     {
         $title=$request->title;

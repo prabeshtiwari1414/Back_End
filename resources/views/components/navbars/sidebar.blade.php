@@ -58,6 +58,15 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link text-white {{ $activePage == 'ManageCategory' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{route('getManageCategroy') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Manage Category</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == 'gallery' ? ' active bg-gradient-primary' : '' }} "
                     href="{{route('getAddGallery') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -73,6 +82,15 @@
                         <i class="material-icons opacity-10">dashboard</i>
                     </div>
                     <span class="nav-link-text ms-1">Product Add</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ $activePage == 'media' ? ' active bg-gradient-primary' : '' }}  "
+                    href="{{ route('getAddMedia') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">person</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Social media</span>
                 </a>
             </li>
             <li class="nav-item">
