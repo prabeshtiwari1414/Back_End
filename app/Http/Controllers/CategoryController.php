@@ -15,9 +15,11 @@ class CategoryController extends Controller
     }
     public function getManageCategroy()
     {
-        //<!--dd('hello');-->
+        $data = [
+            'categories' => category::latest()->get(),
+        ];
        
-        return view('admin.category.manage');
+        return view('admin.category.manage', $data);
     }
     
 
@@ -41,7 +43,16 @@ class CategoryController extends Controller
         }
         $category->details  =   $details;
         $category->save();
-        dd($time);
-        
+      return redirect()->route('getManageCategroy');
+        // dd($time);
     }
+    public function editcategory($id)
+    {
+        $data = [
+            'category' => category::find($id),
+        ];
+        return view('admin.category.edit', $data);
+    }
+    
+
 }

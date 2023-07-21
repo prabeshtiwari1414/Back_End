@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Media;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class MediaController extends Controller
 {
@@ -11,6 +13,17 @@ class MediaController extends Controller
         return view('admin.media.media');
     }
     public function postAddMedia(Request $request){
+         // Validate the request data
+    $validator = Validator::make($request->all(), [
+        
+        'media_icon' => 'image|mimes:png',
+        
+    ]);
+
+    // Check if the validation fails
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
         $media_name=$request->media_name;
         $media_icon=$request->media_icon;
         $media_url=$request->media_url;
@@ -30,5 +43,7 @@ class MediaController extends Controller
         }
         $media->save();
         dd($time);
+    
+   
     }
 }

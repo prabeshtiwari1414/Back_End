@@ -79,7 +79,7 @@
                                 <div class="mb-3 col-md-12">
                                     <label class="form-label">Social Media Icon</label>
                                     <input type="file" name="media_icon" class="form-control border border-2 p-2"
-                                        required>
+                                        accept=".png" required>
                                     @error('photo')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
