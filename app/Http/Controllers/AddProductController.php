@@ -16,7 +16,7 @@ class AddProductController extends Controller
             'products' => product::latest()->get(),
         ];
        
-        return view('admin.category.manage', $data);
+        return view('admin.product.manageproduct',['products' => product::paginate(5)]); 
     }
     public function postAddProduct(Request $request){
         $product_title      =   $request->product_title;

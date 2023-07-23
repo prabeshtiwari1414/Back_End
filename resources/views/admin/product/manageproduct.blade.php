@@ -1,112 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=1, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <x-layout bodyClass="g-sidenav-show  bg-gray-200">
-        <x-navbars.sidebar activePage="manageproduct"></x-navbars.sidebar>
-        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-            <!-- Navbar -->
-            <x-navbars.navs.auth titlePage="Manage Category"></x-navbars.navs.auth>
-            <!-- End Navbar -->
-            <div class="container-fluid py-4">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card my-4">
-                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                    <h6 class="text-white text-capitalize ps-3">Manage Product</h6>
-                                </div>
+<x-layout bodyClass="g-sidenav-show  bg-gray-200">
+    <x-navbars.sidebar activePage="manageproduct"></x-navbars.sidebar>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <!-- Navbar -->
+        <x-navbars.navs.auth titlePage="Manage Product"></x-navbars.navs.auth>
+        <!-- End Navbar -->
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3">Manage Product</h6>
                             </div>
-                            <div class="card-body px-0 pb-2">
-                                <div class="table-responsive p-0">
-                                    <div class="container">
-                                        <div class="row">
-                                            <table class="table align-items-center mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th
-                                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                            Category</th>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <div class="container">
+                                    <div class="row">
+                                        <table class="table align-items-center mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th
+                                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                        Category</th>
 
-                                                        <th
-                                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                            Product title</th>
-                                                        <th
-                                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                            Product Cost</th>
-                                                        <th
-                                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                            Deatils</th>
-                                                        <th
-                                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                            Created At</th>
+                                                    <th
+                                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                        Product title</th>
+                                                    <th
+                                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                        Product Cost</th>
+                                                    <th
+                                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                        Deatils</th>
+                                                    <th
+                                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                        Created At</th>
 
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach($products as $pdt)
-                                                    <tr>
-                                                        <td class="align-middle text-center text-sm">
-                                                            <span
-                                                                class="badge badge-sm bg-gradient-success">{{$pdt->category}}</span>
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex px-2 py-1">
-                                                                <div>
-                                                                    <img src="{{ asset('site/uploads/product/'.$pdt->photo) }}"
-                                                                        class="avatar avatar-sm me-3 border-radius-lg"
-                                                                        alt="user1">
-                                                                </div>
-                                                                <div class="d-flex flex-column justify-content-center">
-                                                                    <h6 class="mb-0 text-sm">{{$pdt->product_title}}
-                                                                    </h6>
-                                                                    </p>
-                                                                </div>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($products as $pdt)
+                                                <tr>
+                                                    <td class="align-middle text-center text-sm">
+                                                        <span
+                                                            class="badge badge-sm bg-gradient-success">{{$pdt->category}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex px-2 py-1">
+                                                            <div>
+                                                                <img src="{{ asset('site/uploads/product/'.$pdt->photo) }}"
+                                                                    class="avatar avatar-sm me-3 border-radius-lg"
+                                                                    alt="user1">
                                                             </div>
-                                                        </td>
+                                                            <div class="d-flex flex-column justify-content-center">
+                                                                <h6 class="mb-0 text-sm">{{$pdt->product_title}}
+                                                                </h6>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
 
-                                                        <td class="align-middle text-center text-sm">
-                                                            <span
-                                                                class="badge badge-sm bg-gradient-success">{{$pdt->product_details}}</span>
-                                                        </td>
-                                                        <td class="align-middle text-center text-sm">
-                                                            <span
-                                                                class="badge badge-sm bg-gradient-success">{{$pdt->cost}}</span>
-                                                        </td>
-                                                        <td class="align-middle text-center">
-                                                            <span
-                                                                class="text-secondary text-xs font-weight-bold">{{$pdt->created_at}}</span>
-                                                        </td>
-                                                        <td class="align-middle">
-                                                            <a href="#!" class="text-secondary font-weight-bold text-xs"
-                                                                data-toggle="tooltip" data-original-title="Edit user">
-                                                                Edit
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                    <td class="align-middle text-center text-sm">
+                                                        <span
+                                                            class="badge badge-sm bg-gradient-success">{{$pdt->product_details}}</span>
+                                                    </td>
+                                                    <td class="align-middle text-center text-sm">
+                                                        <span
+                                                            class="badge badge-sm bg-gradient-success">{{$pdt->cost}}</span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span
+                                                            class="text-secondary text-xs font-weight-bold">{{$pdt->created_at}}</span>
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        <a href="#!" class="text-secondary font-weight-bold text-xs"
+                                                            data-toggle="tooltip" data-original-title="Edit user">
+                                                            Edit
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                        {{$products -> links()}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <x-footers.auth></x-footers.auth>
             </div>
-        </main>
-        <x-plugins></x-plugins>
 
-    </x-layout>
-</body>
+            <x-footers.auth></x-footers.auth>
+        </div>
+    </main>
+    <x-plugins></x-plugins>
 
-</html>
+</x-layout>
