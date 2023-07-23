@@ -10,6 +10,14 @@ class AddProductController extends Controller
     public function getAddProduct(){
         return view('admin.product.product');
     }
+    public function getManageProduct()
+    {
+        $data = [
+            'products' => product::latest()->get(),
+        ];
+       
+        return view('admin.category.manage', $data);
+    }
     public function postAddProduct(Request $request){
         $product_title      =   $request->product_title;
         $product_cost    =   $request->product_cost;
@@ -38,6 +46,7 @@ class AddProductController extends Controller
              $product->product_details    =   $product_details;
              $product->photo    =   $time;
              $product->save();
-             dd($time);
+             return redirect()->route('getManageProduct');
+            //  dd($time);
     }
 }

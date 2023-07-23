@@ -22,6 +22,7 @@ class MediaController extends Controller
 
     // Check if the validation fails
     if ($validator->fails()) {
+        dd('only png image');
         return redirect()->back()->withErrors($validator)->withInput();
     }
         $media_name=$request->media_name;

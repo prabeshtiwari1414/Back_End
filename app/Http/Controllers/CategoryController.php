@@ -19,10 +19,10 @@ class CategoryController extends Controller
             'categories' => category::latest()->get(),
         ];
        
-        return view('admin.category.manage', $data);
+        return view('admin.category.index',['categories' => category::paginate(5)]); //collection
     }
-    
 
+    
     public function postAddCategory(Request $request)
     {
         $title=$request->title;
@@ -46,6 +46,8 @@ class CategoryController extends Controller
       return redirect()->route('getManageCategroy');
         // dd($time);
     }
+
+    
     public function editcategory($id)
     {
         $data = [
@@ -53,6 +55,11 @@ class CategoryController extends Controller
         ];
         return view('admin.category.edit', $data);
     }
-    
 
+    
+    public function index()
+    {
+        return view('category.index',['categories' => category::all()]); //collection
+    }
+    
 }
