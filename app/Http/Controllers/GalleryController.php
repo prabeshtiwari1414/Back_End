@@ -31,7 +31,15 @@ class GalleryController extends Controller
         }
         
         $gallery->save();
-        dd($time);
+        return redirect()->route('getManageGallery');
         
+    }
+    public function getManageGallery()
+    {
+        $data = [
+            'galleries' => gallery::latest()->get(),
+        ];
+       
+        return view('admin.gallery.managegallery',['galleries' => Gallery::paginate(3)]); //collection
     }
 }

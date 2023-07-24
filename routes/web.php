@@ -78,8 +78,10 @@ Route::get('/manage/category', [CategoryController::class, 'getManageCategroy'])
 Route::post('/addcategory', [CategoryController::class, 'postAddCategory'])->name('postAddCategory');
 Route::get('/gallery', [GalleryController::class, 'getAddGallery'])->name('getAddGallery');
 Route::post('/addgallery', [GalleryController::class, 'postAddGallery'])->name('postAddGallery');
+Route::get('/manage/gallery', [GalleryController::class, 'getManageGallery'])->name('getManageGallery');
 Route::get('/product', [AddProductController::class, 'getAddProduct'])->name('getAddProduct');
 Route::get('/manage/product', [AddProductController::class, 'getManageProduct'])->name('getManageProduct');
 Route::post('/addproduct', [AddProductController::class, 'postAddProduct'])->name('postAddProduct');
 Route::get('/media', [MediaController::class, 'getAddMedia'])->name('getAddMedia');
 Route::post('/addmedia', [MediaController::class, 'postAddMedia'])->name('postAddMedia');
+Route::get('/manage/media', [MediaController::class, 'getManageMedia'])->name('getManageMedia');

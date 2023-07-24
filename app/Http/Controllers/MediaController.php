@@ -38,13 +38,23 @@ class MediaController extends Controller
             $media->media_url  =   $media_url;
              $media->media_icon    =   $time;
              // dd($photo);
-        }
-        else{
-             $time=Null;
-        }
-        $media->save();
-        dd($time);
-    
+             
+            }
+            else{
+                $time=Null;
+            }
+            $media->save();
+            return redirect()->route('getManageMedia');
+        
+        
    
+    }
+    public function getManageMedia()
+    {
+        $data = [
+            'media' => media::latest()->get(),
+        ];
+       
+        return view('admin.media.managemedia',['media' => media::paginate(5)]); //collection
     }
 }

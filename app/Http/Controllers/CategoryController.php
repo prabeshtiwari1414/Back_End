@@ -19,7 +19,7 @@ class CategoryController extends Controller
             'categories' => category::latest()->get(),
         ];
        
-        return view('admin.category.index',['categories' => category::paginate(5)]); //collection
+        return view('admin.category.manage',['categories' => category::paginate(5)]); //collection
     }
 
     

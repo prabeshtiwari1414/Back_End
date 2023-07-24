@@ -1,8 +1,8 @@
 <x-layout bodyClass="g-sidenav-show  bg-gray-200">
-    <x-navbars.sidebar activePage="ManageCategory"></x-navbars.sidebar>
+    <x-navbars.sidebar activePage="ManageGallery"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage="Manage Category"></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage="Manage Gallery"></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <div class="row">
@@ -22,41 +22,43 @@
                                                 <tr>
                                                     <th
                                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                        Title
                                                     </th>
 
                                                     <th
-                                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                        Details</th>
+                                                        class="r text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                        Photo</th>
                                                     <th
                                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                        Created At</th>
+                                                        Upload At</th>
                                                     <th class="text-secondary opacity-7"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($categories as $cat)
+                                                @foreach($galleries as $gal)
                                                 <tr>
+
+
+                                                    <td class="align-middle  text-sm">
+                                                        <span
+                                                            class="badge badge-sm bg-gradient-success">{{$gal->title}}</span>
+                                                    </td>
                                                     <td>
                                                         <div class="d-flex px-2 py-1">
                                                             <div>
-                                                                <img src="{{ asset('site/uploads/category/'.$cat->photo) }}"
-                                                                    class="avatar avatar-sm me-3 border-radius-lg"
-                                                                    alt="user1">
+                                                                <img src="{{ asset('site/uploads/gallery/'.$gal->photo) }}"
+                                                                    alt="Image"
+                                                                    class=" img-fluid w-100 img-thumbnail rounded mx-auto d-block"
+                                                                    style="max-width: 200px; height: 200px;">
                                                             </div>
                                                             <div class="d-flex flex-column justify-content-center">
-                                                                <h6 class="mb-0 text-sm">{{$cat->title}}</h6>
-                                                                </p>
+
                                                             </div>
                                                         </div>
                                                     </td>
-
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span
-                                                            class="badge badge-sm bg-gradient-success">{{$cat->details}}</span>
-                                                    </td>
                                                     <td class="align-middle text-center">
                                                         <span
-                                                            class="text-secondary text-xs font-weight-bold">{{$cat->created_at}}</span>
+                                                            class="text-secondary text-xs font-weight-bold">{{$gal->created_at}}</span>
                                                     </td>
                                                     <td class="align-middle">
                                                         <a href="#!" class="text-secondary font-weight-bold text-xs"
@@ -70,7 +72,7 @@
 
                                             </tbody>
                                         </table>
-                                        {{$categories->links()}}
+                                        {{$galleries->links()}}
                                     </div>
                                 </div>
                             </div>
