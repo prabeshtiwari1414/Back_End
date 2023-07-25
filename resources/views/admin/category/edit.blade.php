@@ -1,6 +1,6 @@
 <x-layout bodyClass="g-sidenav-show bg-gray-200">
 
-    <x-navbars.sidebar activePage="category"></x-navbars.sidebar>
+    <x-navbars.sidebar activePage="ManageCategory"></x-navbars.sidebar>
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage='Category'></x-navbars.navs.auth>
@@ -21,7 +21,7 @@
                     <div class="col-auto my-auto">
                         <div class="h-100">
                             <h5 class="mb-1">
-                                Add Category
+                                Edit Category
                             </h5>
 
                         </div>
@@ -61,7 +61,8 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Title</label>
-                                    <input type="text" name="title" class="form-control border border-2 p-2" required>
+                                    <input type="text" name="title" value="{{$category->title}}"
+                                        class="form-control border border-2 p-2" required>
                                     @error('title')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -70,6 +71,12 @@
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Photo</label>
                                     <input type="file" name="photo" class="form-control border border-2 p-2">
+                                    @if($category->photo)
+                                    <img src="{{ asset('site/uploads/category/'.$category->photo) }}"
+                                        alt="Current Photo" style="max-width: 200px;">
+                                    @else
+                                    <p>No photo available.</p>
+                                    @endif
                                     @error('photo')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -79,16 +86,16 @@
 
                                 <div class="mb-3 col-md-12">
                                     <label for="floatingTextarea2">Details</label>
-                                    <textarea class="form-control border border-2 p-2"
+                                    <textarea value="{{$category->details}}" class="form-control border border-2 p-2"
                                         placeholder=" Say something about your add category" id="floatingTextarea2"
-                                        name="details" rows="4" cols="50" required></textarea>
+                                        name="details" rows="4" cols="50" required>{{ $category->details }}</textarea>
                                     @error('')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn bg-gradient-dark">Submit</button>
+                            <button type="submit" class="btn bg-gradient-dark">Edit</button>
                         </form>
 
                     </div>

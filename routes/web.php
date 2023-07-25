@@ -77,6 +77,7 @@ Route::get('/category', [CategoryController::class, 'getAddCategory'])->name('ge
 Route::post('/category/add', [CategoryController::class, 'postAddCategory'])->name('postAddCategory');
 Route::get('/category/manage', [CategoryController::class, 'getManageCategroy'])->name('getManageCategroy');
 Route::get('/category/manage/delete/{category}', [CategoryController::class, 'getDeleteCategory'])->name('getDeleteCategory');
+Route::get('/category/manage/edit/{category}', [CategoryController::class, 'getEditCategory'])->name('getEditCategory');
 
 
 Route::get('/gallery', [GalleryController::class, 'getAddGallery'])->name('getAddGallery');

@@ -10,7 +10,7 @@
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white text-capitalize ps-3">Manage Category</h6>
+                                <h6 class="text-white text-capitalize ps-3">Manage Gallery</h6>
                             </div>
                         </div>
                         <div class="card-body px-0 pb-2">
@@ -63,14 +63,14 @@
                                                     <td class="align-middle">
                                                         <a href="#!" class="text-secondary font-weight-bold text-xs"
                                                             data-toggle="tooltip" data-original-title="Edit user">
-                                                            <button
-                                                                class="bg-info text-light btn-lg"><b>Edit</b></button>
+                                                            <button class="bg-info text-light btn-lg"><b><i
+                                                                        class="material-icons">edit</i></b></button>
                                                         </a> |
                                                         <a href="{{ route('getDeleteGallery', $gal->id) }} "
                                                             class="text-secondary font-weight-bold text-xs"
                                                             data-toggle="tooltip" data-original-title="Edit user">
-                                                            <button
-                                                                class="bg-primary text-light btn-lg"><b>Delete</b></button>
+                                                            <button class="bg-primary text-light btn-lg"><b><i
+                                                                        class="material-icons">delete</i></b></button>
                                                         </a>
                                                     </td>
                                                 </tr>

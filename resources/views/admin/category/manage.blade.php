@@ -60,16 +60,17 @@
                                                             class="text-secondary text-xs font-weight-bold">{{$cat->created_at}}</span>
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="#!" class="text-secondary font-weight-bold text-xs"
+                                                        <a href="{{ route('getEditCategory', $cat->id) }}"
+                                                            class="text-secondary font-weight-bold text-xs"
                                                             data-toggle="tooltip" data-original-title="Edit user">
-                                                            <button
-                                                                class="bg-info text-light btn-lg"><b>Edit</b></button>
+                                                            <button class="bg-info text-light btn-lg"><b> <i
+                                                                        class="material-icons">edit</i></b></button>
                                                         </a> |
                                                         <a href="{{ route('getDeleteCategory', $cat->id) }} "
                                                             class="text-secondary font-weight-bold text-xs"
                                                             data-toggle="tooltip" data-original-title="Delete user">
-                                                            <button
-                                                                class="bg-primary text-light btn-lg"><b>Delete</b></button>
+                                                            <button class="bg-primary text-light btn-lg"><b><i
+                                                                        class="material-icons">delete</i></b></button>
                                                         </a>
                                                     </td>
 

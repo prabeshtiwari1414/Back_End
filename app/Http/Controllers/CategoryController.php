@@ -33,7 +33,7 @@ class CategoryController extends Controller
             $time=md5(time()).'.'.$photo->getClientOriginalExtension();
              // to move photo into folder
             $photo->move('site/uploads/category/',$time);
-            $category=new category;
+            $category=   category;
              $category->title    =   $title;
              $category->photo    =   $time;
              // dd($photo);
@@ -48,13 +48,6 @@ class CategoryController extends Controller
     }
 
     
-    public function editcategory($id)
-    {
-        $data = [
-            'category' => category::find($id),
-        ];
-        return view('admin.category.edit', $data);
-    }
 
     
     
@@ -63,5 +56,10 @@ class CategoryController extends Controller
     {
        $category->delete();
       return redirect()->route('getManageCategroy');
+    }
+    public function getEditCategory(category $category)
+    {
+      $data = ['category' => $category];
+              return view('admin.category.edit',$data);
     }
 }

@@ -3,7 +3,7 @@
     <x-navbars.sidebar activePage="addproduct"></x-navbars.sidebar>
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage='Category'></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage='Product'></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid px-2 px-md-4">
             <div class="page-header min-height-300 border-radius-xl mt-4"
@@ -96,8 +96,7 @@
                                     <label for="floatingTextarea2">Product Details</label>
                                     <textarea class="form-control border border-2 p-2" require
                                         placeholder=" Say something about your add product" id="floatingTextarea2"
-                                        name="product_details" rows="4"
-                                        cols="50">{{ old('about', auth()->user()->about) }}</textarea>
+                                        name="product_details" rows="4" cols="50"></textarea>
                                     @error('')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror

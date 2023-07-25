@@ -16,7 +16,8 @@
                                     <strong><a
                                             href="https://www.creative-tim.com/product/material-dashboard-pro-laravel"
                                             target="_blank" class="text-white"><u>here</u> </a></strong>to see
-                                    the PRO product!</h6>
+                                    the PRO product!
+                                </h6>
                             </div>
                         </div>
                         <div class=" me-3 my-3 text-end">
@@ -87,18 +88,17 @@
                                                 <span class="text-secondary text-xs font-weight-bold">22/03/18</span>
                                             </td>
                                             <td class="align-middle">
-                                                <a rel="tooltip" class="btn btn-success btn-link"
-                                                    href="" data-original-title=""
-                                                    title="">
+                                                <a rel="tooltip" class="btn btn-info btn-link" href=""
+                                                    data-original-title="" title="">
                                                     <i class="material-icons">edit</i>
                                                     <div class="ripple-container"></div>
                                                 </a>
-                                                
+
                                                 <button type="button" class="btn btn-danger btn-link"
-                                                data-original-title="" title="">
-                                                <i class="material-icons">close</i>
-                                                <div class="ripple-container"></div>
-                                            </button>
+                                                    data-original-title="" title="">
+                                                    <i class="material-icons">close</i>
+                                                    <div class="ripple-container"></div>
+                                                </button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -135,13 +135,12 @@
                                                 <span class="text-secondary text-xs font-weight-bold">16/06/18</span>
                                             </td>
                                             <td class="align-middle">
-                                                <a rel="tooltip" class="btn btn-success btn-link"
-                                                href="" data-original-title=""
-                                                title="">
-                                                <i class="material-icons">edit</i>
-                                                <div class="ripple-container"></div>
-                                            </a>
-                                             <button type="button" class="btn btn-danger btn-link"
+                                                <a rel="tooltip" class="btn btn-info btn-link" href=""
+                                                    data-original-title="" title="">
+                                                    <i class="material-icons">edit</i>
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                                <button type="button" class="btn btn-danger btn-link"
                                                     data-original-title="" title="">
                                                     <i class="material-icons">close</i>
                                                     <div class="ripple-container"></div>
@@ -182,17 +181,16 @@
                                                 <span class="text-secondary text-xs font-weight-bold">30/06/18</span>
                                             </td>
                                             <td class="align-middle">
-                                                <a rel="tooltip" class="btn btn-success btn-link"
-                                                    href="" data-original-title=""
-                                                    title="">
+                                                <a rel="tooltip" class="btn btn-info btn-link" href=""
+                                                    data-original-title="" title="">
                                                     <i class="material-icons">edit</i>
                                                     <div class="ripple-container"></div>
                                                 </a>
                                                 <button type="button" class="btn btn-danger btn-link"
-                                                data-original-title="" title="">
-                                                <i class="material-icons">close</i>
-                                                <div class="ripple-container"></div>
-                                            </button>
+                                                    data-original-title="" title="">
+                                                    <i class="material-icons">close</i>
+                                                    <div class="ripple-container"></div>
+                                                </button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -228,17 +226,16 @@
                                                 <span class="text-secondary text-xs font-weight-bold">16/06/19</span>
                                             </td>
                                             <td class="align-middle">
-                                                <a rel="tooltip" class="btn btn-success btn-link"
-                                                    href="" data-original-title=""
-                                                    title="">
+                                                <a rel="tooltip" class="btn btn-info btn-link" href=""
+                                                    data-original-title="" title="">
                                                     <i class="material-icons">edit</i>
                                                     <div class="ripple-container"></div>
                                                 </a>
                                                 <button type="button" class="btn btn-danger btn-link"
-                                                data-original-title="" title="">
-                                                <i class="material-icons">close</i>
-                                                <div class="ripple-container"></div>
-                                            </button>
+                                                    data-original-title="" title="">
+                                                    <i class="material-icons">close</i>
+                                                    <div class="ripple-container"></div>
+                                                </button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -274,17 +271,16 @@
                                                 <span class="text-secondary text-xs font-weight-bold">16/06/18</span>
                                             </td>
                                             <td class="align-middle">
-                                                <a rel="tooltip" class="btn btn-success btn-link"
-                                                    href="" data-original-title=""
-                                                    title="">
+                                                <a rel="tooltip" class="btn btn-info btn-link" href=""
+                                                    data-original-title="" title="">
                                                     <i class="material-icons">edit</i>
                                                     <div class="ripple-container"></div>
                                                 </a>
                                                 <button type="button" class="btn btn-danger btn-link"
-                                                data-original-title="" title="">
-                                                <i class="material-icons">close</i>
-                                                <div class="ripple-container"></div>
-                                            </button>
+                                                    data-original-title="" title="">
+                                                    <i class="material-icons">close</i>
+                                                    <div class="ripple-container"></div>
+                                                </button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -319,9 +315,8 @@
                                                 <span class="text-secondary text-xs font-weight-bold">26/06/18</span>
                                             </td>
                                             <td class="align-middle">
-                                                <a rel="tooltip" class="btn btn-success btn-link"
-                                                    href="" data-original-title=""
-                                                    title="">
+                                                <a rel="tooltip" class="btn btn-info btn-link" href=""
+                                                    data-original-title="" title="">
                                                     <i class="material-icons">edit</i>
                                                     <div class="ripple-container"></div>
                                                 </a>

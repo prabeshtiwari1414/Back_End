@@ -76,14 +76,14 @@
                                                     <td class="align-middle">
                                                         <a href="#!" class="text-secondary font-weight-bold text-xs"
                                                             data-toggle="tooltip" data-original-title="Edit user">
-                                                            <button
-                                                                class="bg-info text-light btn-lg"><b>Edit</b></button>
+                                                            <button class="bg-info text-light btn-lg"><b><i
+                                                                        class="material-icons">edit</i></b></button>
                                                         </a>
                                                         | <a href="{{ route('getDeleteProduct', $pdt->id) }}"
                                                             class="text-secondary font-weight-bold text-xs"
                                                             data-toggle="tooltip" data-original-title="Edit user">
-                                                            <button
-                                                                class="bg-primary text-light btn-lg"><b>Delete</b></button>
+                                                            <button class="bg-primary text-light btn-lg"><b><i
+                                                                        class="material-icons">delete</i></b></button>
                                                         </a>
                                                     </td>
                                                 </tr>
