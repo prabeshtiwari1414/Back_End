@@ -64,13 +64,13 @@
                                                         <a href="#!" class="text-secondary font-weight-bold text-xs"
                                                             data-toggle="tooltip" data-original-title="Edit user">
                                                             <button
-                                                                class="bg-primary text-light btn-lg"><b>Edit</b></button>
+                                                                class="bg-info text-light btn-lg"><b>Edit</b></button>
                                                         </a> |
                                                         <a href="{{ route('getDeleteGallery', $gal->id) }} "
                                                             class="text-secondary font-weight-bold text-xs"
                                                             data-toggle="tooltip" data-original-title="Edit user">
                                                             <button
-                                                                class="bg-danger text-light btn-lg"><b>Delete</b></button>
+                                                                class="bg-primary text-light btn-lg"><b>Delete</b></button>
                                                         </a>
                                                     </td>
                                                 </tr>
