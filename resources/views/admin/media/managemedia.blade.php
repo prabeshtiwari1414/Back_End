@@ -63,7 +63,14 @@
                                                     <td class="align-middle">
                                                         <a href="#!" class="text-secondary font-weight-bold text-xs"
                                                             data-toggle="tooltip" data-original-title="Edit user">
-                                                            Edit
+                                                            <button
+                                                                class="bg-primary text-light btn-lg"><b>Edit</b></button>
+                                                        </a> |
+                                                        <a href="{{ route('getDeleteMedia', $med->id) }} "
+                                                            class="text-secondary font-weight-bold text-xs"
+                                                            data-toggle="tooltip" data-original-title="Edit user">
+                                                            <button
+                                                                class="bg-danger text-light btn-lg"><b>Delete</b></button>
                                                         </a>
                                                     </td>
                                                 </tr>

@@ -57,4 +57,10 @@ class MediaController extends Controller
        
         return view('admin.media.managemedia',['media' => media::paginate(5)]); //collection
     }
+    
+    public function getDeleteMedia (Media $media)
+    {
+       $media->delete();
+      return redirect()->route('getManageMedia');
+    }
 }

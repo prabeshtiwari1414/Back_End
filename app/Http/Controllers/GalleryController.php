@@ -42,4 +42,9 @@ class GalleryController extends Controller
        
         return view('admin.gallery.managegallery',['galleries' => Gallery::paginate(3)]); //collection
     }
+    public function getDeleteGallery (Gallery $gallery)
+    {
+       $gallery->delete();
+      return redirect()->route('getManageGallery');
+    }
 }

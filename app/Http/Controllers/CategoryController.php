@@ -57,9 +57,11 @@ class CategoryController extends Controller
     }
 
     
-    public function index()
-    {
-        return view('category.index',['categories' => category::all()]); //collection
-    }
     
+    
+    public function getDeleteCategory(category $category)
+    {
+       $category->delete();
+      return redirect()->route('getManageCategroy');
+    }
 }
