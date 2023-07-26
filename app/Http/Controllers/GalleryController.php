@@ -47,4 +47,11 @@ class GalleryController extends Controller
        $gallery->delete();
       return redirect()->route('getManageGallery');
     }
+    
+    public function getEditGallery(Gallery $gallery)
+    {
+      $data = ['gallery' => $gallery];
+              return view('admin.gallery.editgallery',$data);
+    }
+    
 }

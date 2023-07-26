@@ -57,4 +57,11 @@ class AddProductController extends Controller
     
 
     }
+   
+    public function getEditProduct(Product $product)
+    {
+      $data = ['product' => $product];
+              return view('admin.product.editproduct',$data);
+    }
+    
 }

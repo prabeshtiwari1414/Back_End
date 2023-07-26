@@ -67,14 +67,15 @@
                                                     </td>
                                                     <td class="align-middle text-center text-sm">
                                                         <span
-                                                            class="badge badge-sm bg-gradient-success">{{$pdt->cost}}</span>
+                                                            class="badge badge-sm bg-gradient-success">{{$pdt->product_cost}}</span>
                                                     </td>
                                                     <td class="align-middle text-center">
                                                         <span
                                                             class="text-secondary text-xs font-weight-bold">{{$pdt->created_at}}</span>
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="#!" class="text-secondary font-weight-bold text-xs"
+                                                        <a href="{{ route('getEditProduct', $pdt->id) }}"
+                                                            class="text-secondary font-weight-bold text-xs"
                                                             data-toggle="tooltip" data-original-title="Edit user">
                                                             <button class="bg-info text-light btn-lg"><b><i
                                                                         class="material-icons">edit</i></b></button>

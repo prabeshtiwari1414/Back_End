@@ -2,7 +2,7 @@
     <x-navbars.sidebar activePage="managemedia"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage="Manage Social Media "></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage=" Social Media "></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
             <div class="row">
@@ -61,7 +61,8 @@
                                                             class="text-secondary text-xs font-weight-bold">{{$med->created_at}}</span>
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="#!" class="text-secondary font-weight-bold text-xs"
+                                                        <a href="{{ route('getEditMedia', $med->id) }}"
+                                                            class="text-secondary font-weight-bold text-xs"
                                                             data-toggle="tooltip" data-original-title="Edit user">
                                                             <button class="bg-info text-light btn-lg"><b><i
                                                                         class="material-icons">edit</i></b></button>

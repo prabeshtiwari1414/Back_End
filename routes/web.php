@@ -84,6 +84,7 @@ Route::get('/gallery', [GalleryController::class, 'getAddGallery'])->name('getAd
 Route::post('/gallery/add', [GalleryController::class, 'postAddGallery'])->name('postAddGallery');
 Route::get('/gallery/manage', [GalleryController::class, 'getManageGallery'])->name('getManageGallery');
 Route::get('/gallery/manage/delete/{gallery}', [GalleryController::class, 'getDeleteGallery'])->name('getDeleteGallery');
+Route::get('/gallery/manage/edit/{gallery}', [GalleryController::class, 'getEditGallery'])->name('getEditGallery');
 
 
 
@@ -92,6 +93,10 @@ Route::get('/product', [AddProductController::class, 'getAddProduct'])->name('ge
 Route::post('/product/add', [AddProductController::class, 'postAddProduct'])->name('postAddProduct');
 Route::get('/product/manage', [AddProductController::class, 'getManageProduct'])->name('getManageProduct');
 Route::get('/product/manage/delete/{product}', [AddProductController::class, 'getDeleteProduct'])->name('getDeleteProduct');
+Route::get('/product/manage/edit/{product}', [AddProductController::class, 'getEditProduct'])->name('getEditProduct');
+
+
+
 
 
 
@@ -99,4 +104,5 @@ Route::get('/product/manage/delete/{product}', [AddProductController::class, 'ge
 Route::get('/media', [MediaController::class, 'getAddMedia'])->name('getAddMedia');
 Route::post('/media/add', [MediaController::class, 'postAddMedia'])->name('postAddMedia');
 Route::get('/media/manage', [MediaController::class, 'getManageMedia'])->name('getManageMedia');
-Route::get('/mmedia/manage/delete{media}', [MediaController::class, 'getDeleteMedia'])->name('getDeleteMedia');
+Route::get('/media/manage/delete/{media}', [MediaController::class, 'getDeleteMedia'])->name('getDeleteMedia');
+Route::get('/media/manage/edit/{media}', [MediaController::class, 'getEditMedia'])->name('getEditMedia');

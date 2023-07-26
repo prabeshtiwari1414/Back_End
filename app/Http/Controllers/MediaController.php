@@ -63,4 +63,10 @@ class MediaController extends Controller
        $media->delete();
       return redirect()->route('getManageMedia');
     }
+    
+    public function getEditMedia(Media $media)
+    {
+      $data = ['media' => $media];
+              return view('admin.media.editmedia',$data);
+    }
 }

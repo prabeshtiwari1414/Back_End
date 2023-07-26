@@ -61,7 +61,8 @@
                                                             class="text-secondary text-xs font-weight-bold">{{$gal->created_at}}</span>
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="#!" class="text-secondary font-weight-bold text-xs"
+                                                        <a href="{{ route('getEditGallery', $gal->id) }}"
+                                                            class="text-secondary font-weight-bold text-xs"
                                                             data-toggle="tooltip" data-original-title="Edit user">
                                                             <button class="bg-info text-light btn-lg"><b><i
                                                                         class="material-icons">edit</i></b></button>
