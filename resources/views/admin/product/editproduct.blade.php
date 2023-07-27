@@ -1,6 +1,6 @@
 <x-layout bodyClass="g-sidenav-show bg-gray-200">
 
-    <x-navbars.sidebar activePage="addproduct"></x-navbars.sidebar>
+    <x-navbars.sidebar activePage="manageproduct"></x-navbars.sidebar>
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage='Product'></x-navbars.navs.auth>
@@ -114,10 +114,16 @@
 
                                 <div class="mb-3 col-md-12">
                                     <label class="form-label">Product Status</label> <br>
-                                    <input type="radio" id="product_status" name="product_status" value="show">
+
+                                    <input type="radio" id="product_status" name="product_status" value="show"
+                                        {{ $product->product_status == 'show' ? 'checked' : ''  }}>
+
                                     <label for="product_status">Show</label><br>
-                                    <input type="radio" id="product_status" name="product_status" value="hide">
+
+                                    <input type="radio" id="product_status" name="product_status" value="hide"
+                                        {{ $product->product_status == 'hide' ? 'checked' : ''  }}>
                                     <label for=" product_status">Hide</label><br>
+
 
                                     @error('photo')
                                     <p class='text-danger inputerror'>{{ $message }} </p>

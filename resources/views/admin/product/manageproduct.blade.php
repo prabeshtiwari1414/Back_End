@@ -35,6 +35,9 @@
                                                         Deatils</th>
                                                     <th
                                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                        Status</th>
+                                                    <th
+                                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                         Created At</th>
 
                                                 </tr>
@@ -68,6 +71,10 @@
                                                     <td class="align-middle text-center text-sm">
                                                         <span
                                                             class="badge badge-sm bg-gradient-success">{{$pdt->product_cost}}</span>
+                                                    </td>
+                                                    <td class="align-middle text-center text-sm">
+                                                        <span
+                                                            class="badge badge-sm bg-gradient-success">{{$pdt->product_status}}</span>
                                                     </td>
                                                     <td class="align-middle text-center">
                                                         <span

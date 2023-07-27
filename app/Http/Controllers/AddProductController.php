@@ -74,6 +74,7 @@ class AddProductController extends Controller
                 $product->product_title = $request->input('product_title');
                 $product->product_cost = $request->input('product_cost');
                 $product->product_details = $request->input('product_details');
+                $product->product_status = $request->input('product_status');
                 $product->photo = $time;
                 $product->save();
             }
@@ -81,6 +82,7 @@ class AddProductController extends Controller
                 $product->category = $request->input('category');
                 $product->product_title = $request->input('product_title');
                 $product->product_cost = $request->input('product_cost');
+                $product->product_status = $request->input('product_status');
                 $product->product_details = $request->input('product_details');
                 $product->save();
             }

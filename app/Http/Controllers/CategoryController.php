@@ -33,7 +33,7 @@ class CategoryController extends Controller
             $time=md5(time()).'.'.$photo->getClientOriginalExtension();
              // to move photo into folder
             $photo->move('site/uploads/category/',$time);
-            $category=   category;
+            $category= new category;
              $category->title    =   $title;
              $category->photo    =   $time;
              // dd($photo);
