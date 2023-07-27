@@ -62,4 +62,25 @@ class CategoryController extends Controller
       $data = ['category' => $category];
               return view('admin.category.edit',$data);
     }
+   
+        public function postEditCategory(Request $request, category $category){
+            $photo = $request->file('photo');
+            if($photo){
+    
+                $time=md5(time()).'.'.$photo->getClientOriginalExtension();
+                $photo->move('site/uploads/category/',$time);
+    
+                $category->title = $request->input('title');
+                $category->details = $request->input('details');
+                $category->photo = $time;
+                $category->save();
+            }
+            else{
+                $category->title = $request->input('title');
+                $category->details = $request->input('details');
+                $category->save();
+            }
+           
+            return redirect()->route('getManageCategroy');    
+        }
 }
