@@ -55,7 +55,8 @@
 
                         </div>
                         @endif
-                        <form method='POST' action="{{route('postAddGallery')}}" enctype="multipart/form-data">
+                        <form method='POST' action="{{route('postEditGallery', $gallery->id )}}"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="row">
 

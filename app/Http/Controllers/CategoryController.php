@@ -63,7 +63,7 @@ class CategoryController extends Controller
               return view('admin.category.edit',$data);
     }
    
-        public function postEditCategory(Request $request, category $category){
+    public function postEditCategory(Request $request, category $category){
             $photo = $request->file('photo');
             if($photo){
     

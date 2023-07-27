@@ -69,4 +69,25 @@ class MediaController extends Controller
       $data = ['media' => $media];
               return view('admin.media.editmedia',$data);
     }
+    public function postEditMedia(Request $request, Media $media){
+        $photo = $request->file('media_icon');
+        if($photo){
+
+            $time=md5(time()).'.'.$photo->getClientOriginalExtension();
+            $photo->move('site/uploads/media/',$time);
+
+            $media->media_name = $request->input('media_name');
+            $media->media_url = $request->input('media_url');
+            $media->media_icon = $time;
+            $media->save();
+        }
+        else{
+            $media->media_name = $request->input('media_name');
+            $media->media_url = $request->input('media_url');
+            $media->save();
+        }
+       
+        return redirect()->route('getManageMedia');    
+    }
+    
 }

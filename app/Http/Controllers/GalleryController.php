@@ -53,5 +53,23 @@ class GalleryController extends Controller
       $data = ['gallery' => $gallery];
               return view('admin.gallery.editgallery',$data);
     }
+    public function postEditGallery(Request $request, Gallery $gallery){
+        $photo = $request->file('photo');
+        if($photo){
+
+            $time=md5(time()).'.'.$photo->getClientOriginalExtension();
+            $photo->move('site/uploads/gallery/',$time);
+
+            $gallery->title = $request->input('title');
+            $gallery->photo = $time;
+            $gallery->save();
+        }
+        else{
+            $gallery->title = $request->input('title');
+            $gallery->save();
+        }
+       
+        return redirect()->route('getManageGallery');    
+    }
     
 }

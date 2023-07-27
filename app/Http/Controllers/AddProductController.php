@@ -64,4 +64,27 @@ class AddProductController extends Controller
               return view('admin.product.editproduct',$data);
     }
     
+    public function postEditProduct(Request $request, Product $product){
+            $photo = $request->file('photo');
+            if($photo){
+    
+                $time=md5(time()).'.'.$photo->getClientOriginalExtension();
+                $photo->move('site/uploads/product/',$time);
+                $product->category = $request->input('category');
+                $product->product_title = $request->input('product_title');
+                $product->product_cost = $request->input('product_cost');
+                $product->product_details = $request->input('product_details');
+                $product->photo = $time;
+                $product->save();
+            }
+            else{
+                $product->category = $request->input('category');
+                $product->product_title = $request->input('product_title');
+                $product->product_cost = $request->input('product_cost');
+                $product->product_details = $request->input('product_details');
+                $product->save();
+            }
+           
+            return redirect()->route('getManageProduct');    
+        }
 }
