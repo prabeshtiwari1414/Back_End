@@ -59,7 +59,6 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Category</label>
                                     <input type="text" value="{{$product->category}}" name="category"

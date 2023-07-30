@@ -16,7 +16,6 @@ class CategoryController extends Controller
     public function getManageCategroy()
     {
         $data = [
-            'categories' => category::latest()->get(),
         ];
        
         return view('admin.category.manage',['categories' => category::paginate(5)]); //collection
@@ -43,7 +42,7 @@ class CategoryController extends Controller
         }
         $category->details  =   $details;
         $category->save();
-      return redirect()->route('getManageCategroy');
+      return redirect()->route('getManageCategroy')->with('success', 'Category added successfully');
         // dd($time);
     }
 
