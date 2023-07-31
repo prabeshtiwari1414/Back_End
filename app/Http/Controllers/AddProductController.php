@@ -66,26 +66,21 @@ class AddProductController extends Controller
     
     public function postEditProduct(Request $request, Product $product){
             $photo = $request->file('photo');
+            $product->category = $request->input('category');
+                $product->product_title = $request->input('product_title');
+                $product->product_cost = $request->input('product_cost');
+                $product->product_details = $request->input('product_details');
+                $product->product_status = $request->input('product_status');
             if($photo){
     
                 $time=md5(time()).'.'.$photo->getClientOriginalExtension();
                 $photo->move('site/uploads/product/',$time);
-                $product->category = $request->input('category');
-                $product->product_title = $request->input('product_title');
-                $product->product_cost = $request->input('product_cost');
-                $product->product_details = $request->input('product_details');
-                $product->product_status = $request->input('product_status');
+                
                 $product->photo = $time;
-                $product->save();
+              
             }
-            else{
-                $product->category = $request->input('category');
-                $product->product_title = $request->input('product_title');
-                $product->product_cost = $request->input('product_cost');
-                $product->product_status = $request->input('product_status');
-                $product->product_details = $request->input('product_details');
-                $product->save();
-            }
+            $product->save();
+
            
             return redirect()->route('getManageProduct');    
         }
