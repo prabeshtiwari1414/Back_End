@@ -29,10 +29,10 @@
                                                         Product title</th>
                                                     <th
                                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                        Product Cost</th>
+                                                        Deatils</th>
                                                     <th
                                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                        Deatils</th>
+                                                        Product Cost</th>
                                                     <th
                                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                         Status</th>

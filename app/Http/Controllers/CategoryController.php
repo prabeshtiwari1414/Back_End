@@ -33,13 +33,13 @@ class CategoryController extends Controller
              // to move photo into folder
             $photo->move('site/uploads/category/',$time);
             $category= new category;
-             $category->title    =   $title;
-             $category->photo    =   $time;
-             // dd($photo);
+            // dd($photo);
         }
         else{
-             $time=Null;
+            $time=Null;
         }
+        $category->title    =   $title;
+        $category->photo    =   $time;
         $category->details  =   $details;
         $category->save();
       return redirect()->route('getManageCategroy')->with('success', 'Category added successfully');
