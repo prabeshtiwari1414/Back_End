@@ -14,17 +14,20 @@ class MediaController extends Controller
     }
     public function postAddMedia(Request $request){
          // Validate the request data
-    $validator = Validator::make($request->all(), [
+   
         
-        'media_icon' => 'image|mimes:png',
-        
-    ]);
+         $validator = Validator::make($request->all(), [
+            'media_name' => 'required',
+            'media_icon' => 'required|file|mimes:png', // Example validation for file type (you can adjust the allowed file types)
+            'media_url' => 'required|url', // Example validation for URL format
+        ]);
 
     // Check if the validation fails
-    if ($validator->fails()) {
-        dd('only png image');
-        return redirect()->back()->withErrors($validator)->withInput();
-    }
+                if ($validator->fails()) { 
+                    
+
+                    return redirect()->route('getAddMedia')->withErrors($validator)->with('warning', 'Please fill all data correctly.');
+                }
         $media_name=$request->media_name;
         $media_icon=$request->media_icon;
         $media_url=$request->media_url;
@@ -44,7 +47,7 @@ class MediaController extends Controller
                 $time=Null;
             }
             $media->save();
-            return redirect()->route('getManageMedia');
+            return redirect()->route('getManageMedia')->with('success', 'Product added successfully');
         
         
    

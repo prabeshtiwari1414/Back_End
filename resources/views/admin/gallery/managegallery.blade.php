@@ -17,6 +17,16 @@
                             <div class="table-responsive p-0">
                                 <div class="container">
                                     <div class="row">
+                                        @if(Session::has('success'))
+                                        <div class="row">
+
+                                            <div class="col-md-12">
+                                                <div class="alert alert-success text-light" role="alert">
+                                                    <b>Successfully Added</b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endif
                                         <table class="table align -items-center mb-0">
                                             <thead>
                                                 <tr>

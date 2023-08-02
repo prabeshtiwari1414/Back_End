@@ -55,50 +55,51 @@
 
                         </div>
                         @endif
+
                         <form method='POST' action="{{route('postAddProduct')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Category</label>
-                                    <input type="text" name="category" class="form-control border border-2 p-2" require>
-                                    @error('title')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    <input type="text" name="category" class="form-control border border-2 p-2">
+                                    @error('category')
+                                    <p class='text-danger inputerror'><b>{{ $message }}</b> </p>
                                     @enderror
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Product Title</label>
-                                    <input type="text" name="product_title" class="form-control border border-2 p-2"
-                                        require>
-                                    @error('title')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    <input type="text" name="product_title" class="form-control border border-2 p-2 ">
+
+                                    @error('product_title')
+                                    <p class='text-danger inputerror '><b>{{ $message }}</b> </p>
                                     @enderror
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Product Cost</label>
                                     <input type="text" name="product_cost" class="form-control border border-2 p-2"
-                                        require value="Rs.">
-                                    @error('title')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                        value="Rs.">
+                                    @error('product_cost')
+                                    <p class='text-danger inputerror'><b>{{ $message }}</b> </p>
                                     @enderror
+
                                 </div>
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Photo</label>
-                                    <input type="file" name="photo" class="form-control border border-2 p-2" require>
+                                    <input type="file" name="photo" class="form-control border border-2 p-2">
                                     @error('photo')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    <p class='text-danger inputerror'><b>{{ $message }}</b> </p>
                                     @enderror
                                 </div>
 
 
                                 <div class="mb-3 col-md-12">
                                     <label for="floatingTextarea2">Product Details</label>
-                                    <textarea class="form-control border border-2 p-2" require
-                                        placeholder=" Say something about your add product" id="floatingTextarea2"
-                                        name="product_details" rows="4" cols="50"></textarea>
-                                    @error('')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    <textarea class="form-control border border-2 p-2" name="product_details" rows="4"
+                                        cols="50"></textarea>
+                                    @error('product_details')
+                                    <p class='text-danger inputerror'><b>{{ $message }}</b> </p>
                                     @enderror
                                 </div>
 
@@ -109,10 +110,11 @@
                                     <label for="product_status">Show</label><br>
                                     <input type="radio" id="product_status" name="product_status" value="hide">
                                     <label for=" product_status">Hide</label><br>
-
-                                    @error('photo')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    @error('product_status')
+                                    <p class='text-danger inputerror'><b>{{ $message }}</b> </p>
                                     @enderror
+
+
                                 </div>
 
 

@@ -13,6 +13,10 @@ class GalleryController extends Controller
     }
     public function postAddGallery(Request $request)
     {
+        $request->validate([
+            'title'=> 'required',
+            'photo'=> 'required',
+        ]);
         $title=$request->title;
         $photo=$request->photo;
        
@@ -31,7 +35,7 @@ class GalleryController extends Controller
         }
         
         $gallery->save();
-        return redirect()->route('getManageGallery');
+        return redirect()->route('getManageGallery')->with('success', 'Product added successfully');
         
     }
     public function getManageGallery()

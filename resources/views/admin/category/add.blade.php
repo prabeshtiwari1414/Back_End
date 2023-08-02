@@ -82,7 +82,7 @@
                                     <textarea class="form-control border border-2 p-2"
                                         placeholder=" Say something about your add category" id="floatingTextarea2"
                                         name="details" rows="4" cols="50" required></textarea>
-                                    @error('')
+                                    @error('details')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
                                 </div>

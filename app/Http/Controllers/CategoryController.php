@@ -24,6 +24,11 @@ class CategoryController extends Controller
     
     public function postAddCategory(Request $request)
     {
+        $request->validate([
+            'title'=> 'required',
+            'photo'=> 'required',
+            'details'=> 'required',
+        ]);
         $title=$request->title;
         $photo=$request->photo;
         $details=$request->details;

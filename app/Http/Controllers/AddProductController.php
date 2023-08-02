@@ -19,6 +19,15 @@ class AddProductController extends Controller
         return view('admin.product.manageproduct',['products' => product::paginate(5)]); 
     }
     public function postAddProduct(Request $request){
+
+        $request->validate([
+            'category'=> 'required',
+            'product_title'=> 'required',
+            'product_cost'=> 'required',
+            'photo'=> 'required',
+            'product_details'=> 'required',
+            'product_status'=> 'required',
+        ]);
         $product_title      =   $request->product_title;
         $product_cost       =      $request->product_cost;
         $product_status     =    $request->product_status;
@@ -46,8 +55,7 @@ class AddProductController extends Controller
              $product->product_details         =   $product_details;
              $product->photo                   =   $time;
              $product->save();
-             return redirect()->route('getManageProduct');
-            //  dd($time);
+             return redirect()->route('getManageProduct')->with('success', 'Product added successfully');            //  dd($time);
     }
     public function getDeleteProduct (Product $product)
     {
@@ -60,8 +68,8 @@ class AddProductController extends Controller
    
     public function getEditProduct(Product $product)
     {
-      $data = ['product' => $product];
-              return view('admin.product.editproduct',$data);
+      
+              return view('admin.product.editproduct', ['product' => $product]);
     }
     
     public function postEditProduct(Request $request, Product $product){
