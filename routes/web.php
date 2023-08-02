@@ -24,9 +24,11 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\UserProfile;
 use App\Http\Controllers\AddProductController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\SiteController;
+
 
             
-
+Route::get('/', [SiteController::class, 'getHome'])->name('getHome');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 Route::get('sign-up', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('sign-up', [RegisterController::class, 'store'])->middleware('guest');

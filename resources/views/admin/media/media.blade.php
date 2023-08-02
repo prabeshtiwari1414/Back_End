@@ -56,58 +56,52 @@
                         </div>
                         @endif
                         <div class="row">
-                            @if(Session::has('warning'))
 
-                            <div class="col-md-12">
-                                <div class="alert alert-warning text-light" role="alert">
-                                    <b>{{ session('warning') }}</b>
+                            <form method='POST' action="{{route('postAddMedia')}}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="row">
+
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label">Social Media Name</label>
+                                        <input type="text" value="{{old('media_name')}}" name="media_name"
+                                            class="form-control border border-2 p-2">
+                                        @error('media_name')
+                                        <p class='text-danger inputerror'>{{ $message }} </p>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label">Social Media Link</label>
+                                        <input type="url" value="{{old('media_url')}}" name="media_url"
+                                            class="form-control border border-2 p-2">
+                                        @error('media_url')
+                                        <p class='text-danger inputerror'>{{ $message }} </p>
+                                        @enderror
+                                    </div>
+
+                                    <div class="mb-3 col-md-12">
+                                        <label class="form-label">Social Media Icon</label>
+                                        <input type="file" value="{{old('media_icon')}}" name="media_icon"
+                                            class="form-control border border-2 p-2" accept=".png">
+                                        @error('media_icon')
+                                        <p class='text-danger inputerror'>{{ $message }} </p>
+                                        @enderror
+                                    </div>
+
+
+
+
                                 </div>
-                            </div>
+
+                                <button type="submit" class="btn bg-gradient-dark">Add</button>
+                            </form>
+
                         </div>
-                        @endif
-                        <form method='POST' action="{{route('postAddMedia')}}" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
-
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label">Social Media Name</label>
-                                    <input type="text" name="media_name" class="form-control border border-2 p-2">
-                                    @error('media_name')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
-                                    @enderror
-                                </div>
-                                <div class="mb-3 col-md-6">
-                                    <label class="form-label">Social Media Link</label>
-                                    <input type="url" name="media_url" class="form-control border border-2 p-2">
-                                    @error('media_url')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-3 col-md-12">
-                                    <label class="form-label">Social Media Icon</label>
-                                    <input type="file" name="media_icon" class="form-control border border-2 p-2"
-                                        accept=".png">
-                                    @error('media_icon')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
-                                    @enderror
-                                </div>
-
-
-
-
-                            </div>
-
-                            <button type="submit" class="btn bg-gradient-dark">Add</button>
-                        </form>
-
                     </div>
                 </div>
+
             </div>
 
         </div>
-
-    </div>
-    <x-plugins></x-plugins>
+        <x-plugins></x-plugins>
 
 </x-layout>

@@ -61,7 +61,8 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Title</label>
-                                    <input type="text" name="title" class="form-control border border-2 p-2" required>
+                                    <input type="text" value="{{old('title')}}" name="title"
+                                        class="form-control border border-2 p-2">
                                     @error('title')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
@@ -81,7 +82,7 @@
                                     <label for="floatingTextarea2">Details</label>
                                     <textarea class="form-control border border-2 p-2"
                                         placeholder=" Say something about your add category" id="floatingTextarea2"
-                                        name="details" rows="4" cols="50" required></textarea>
+                                        name="details" rows="4" cols="50">{{old('details')}}</textarea>
                                     @error('details')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror

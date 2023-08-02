@@ -62,14 +62,16 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Category</label>
-                                    <input type="text" name="category" class="form-control border border-2 p-2">
+                                    <input type="text" value=" {{old('category')}}" name="category"
+                                        class="form-control border border-2 p-2">
                                     @error('category')
                                     <p class='text-danger inputerror'><b>{{ $message }}</b> </p>
                                     @enderror
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Product Title</label>
-                                    <input type="text" name="product_title" class="form-control border border-2 p-2 ">
+                                    <input type="text" value=" {{old('product_title')}}" name="product_title"
+                                        class="form-control border border-2 p-2 ">
 
                                     @error('product_title')
                                     <p class='text-danger inputerror '><b>{{ $message }}</b> </p>
@@ -77,8 +79,8 @@
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Product Cost</label>
-                                    <input type="text" name="product_cost" class="form-control border border-2 p-2"
-                                        value="Rs.">
+                                    <input type="text" value=" {{old('product_cost')}}" name="product_cost"
+                                        class="form-control border border-2 p-2" value="Rs.">
                                     @error('product_cost')
                                     <p class='text-danger inputerror'><b>{{ $message }}</b> </p>
                                     @enderror
@@ -87,7 +89,8 @@
 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Photo</label>
-                                    <input type="file" name="photo" class="form-control border border-2 p-2">
+                                    <input type="file" value=" {{old('photo')}}" name="photo"
+                                        class="form-control border border-2 p-2">
                                     @error('photo')
                                     <p class='text-danger inputerror'><b>{{ $message }}</b> </p>
                                     @enderror
@@ -97,7 +100,7 @@
                                 <div class="mb-3 col-md-12">
                                     <label for="floatingTextarea2">Product Details</label>
                                     <textarea class="form-control border border-2 p-2" name="product_details" rows="4"
-                                        cols="50"></textarea>
+                                        cols="50">  {{old('product_details')}}</textarea>
                                     @error('product_details')
                                     <p class='text-danger inputerror'><b>{{ $message }}</b> </p>
                                     @enderror
@@ -106,12 +109,14 @@
 
                                 <div class="mb-3 col-md-12">
                                     <label class="form-label">Product Status</label> <br>
-                                    <input type="radio" id="product_status" name="product_status" value="show">
+                                    <input type="radio" id="product_status" name="product_status" value="show"
+                                        {{ old('product_status') === 'show' ? 'checked' : '' }}>
                                     <label for="product_status">Show</label><br>
-                                    <input type="radio" id="product_status" name="product_status" value="hide">
+                                    <input type="radio" id="product_status" name="product_status" value="hide"
+                                        {{ old('product_status') === 'hide' ? 'checked' : '' }}>
                                     <label for=" product_status">Hide</label><br>
                                     @error('product_status')
-                                    <p class='text-danger inputerror'><b>{{ $message }}</b> </p>
+                                    <p class='text-danger  inputerror'><b>{{ $message }}</b> </p>
                                     @enderror
 
 
