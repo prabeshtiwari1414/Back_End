@@ -79,8 +79,8 @@
                                                             class="badge badge-sm bg-gradient-success">{{$pdt->product_details}}</span>
                                                     </td>
                                                     <td class="align-middle text-center text-sm">
-                                                        <span
-                                                            class="badge badge-sm bg-gradient-success">{{$pdt->product_cost}}</span>
+                                                        <span class="badge badge-sm bg-gradient-success">Rs.
+                                                            {{$pdt->product_cost}}</span>
                                                     </td>
                                                     <td class="align-middle text-center text-sm">
                                                         <span

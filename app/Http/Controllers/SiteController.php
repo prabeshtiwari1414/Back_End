@@ -8,7 +8,16 @@ use App\Models\Product;
 class SiteController extends Controller
 {
     public function getHome(){
-        $data = ['products' => $product];
-        return view('site.home', $data );
+        $data= [
+            'products' => Product::latest()->limit(8)->get(),
+            
+        ];
+        return view('site.home', $data);
+    }
+    public function getProduct(){
+        $data= [
+            'products' => Product::where('product_status', 'show')->latest()->get(),
+        ];
+        return view('site.product', $data);
     }
 }

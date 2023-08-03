@@ -80,7 +80,7 @@
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Product Cost</label>
                                     <input type="text" value=" {{old('product_cost')}}" name="product_cost"
-                                        class="form-control border border-2 p-2" value="Rs.">
+                                        class="form-control border border-2 p-2">
                                     @error('product_cost')
                                     <p class='text-danger inputerror'><b>{{ $message }}</b> </p>
                                     @enderror

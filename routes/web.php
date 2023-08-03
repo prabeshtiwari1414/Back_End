@@ -29,6 +29,12 @@ use App\Http\Controllers\SiteController;
 
             
 Route::get('/', [SiteController::class, 'getHome'])->name('getHome');
+Route::get('/product/views', [SiteController::class, 'getProduct'])->name('getProduct');
+
+
+
+
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 Route::get('sign-up', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('sign-up', [RegisterController::class, 'store'])->middleware('guest');

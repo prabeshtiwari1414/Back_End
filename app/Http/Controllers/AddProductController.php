@@ -24,7 +24,7 @@ class AddProductController extends Controller
             'category'=> 'required',
             'product_title'=> 'required',
             'product_cost'=> 'required',
-            'photo'=> 'required',
+            'photo' => 'required|file|mimes:png',
             'product_details'=> 'required',
             'product_status'=> 'required',
         ]);
@@ -61,7 +61,7 @@ class AddProductController extends Controller
     {
         
         $product->delete();
-        return redirect()->back();
+       return redirect()->route('getManageProduct');
     
 
     }
@@ -73,8 +73,8 @@ class AddProductController extends Controller
     }
     
     public function postEditProduct(Request $request, Product $product){
-            $photo = $request->file('photo');
-            $product->category = $request->input('category');
+                $photo = $request->file('photo');
+                $product->category = $request->input('category');
                 $product->product_title = $request->input('product_title');
                 $product->product_cost = $request->input('product_cost');
                 $product->product_details = $request->input('product_details');
