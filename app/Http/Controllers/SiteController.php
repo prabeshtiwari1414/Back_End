@@ -9,7 +9,7 @@ class SiteController extends Controller
 {
     public function getHome(){
         $data= [
-            'products' => Product::latest()->limit(8)->get(),
+            'products' => Product::where('product_status', 'show')->latest()->limit(8)->get(),
             
         ];
         return view('site.home', $data);

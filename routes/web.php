@@ -81,44 +81,44 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('pages.laravel-examples.user-profile');
 	})->name('user-profile');
 });
-Route::get('/category', [CategoryController::class, 'getAddCategory'])->name('getAddCategory');
-Route::post('/category/add', [CategoryController::class, 'postAddCategory'])->name('postAddCategory');
-Route::get('/category/manage', [CategoryController::class, 'getManageCategroy'])->name('getManageCategroy');
-Route::get('/category/manage/delete/{category}', [CategoryController::class, 'getDeleteCategory'])->name('getDeleteCategory');
-Route::get('/category/manage/edit/{category}', [CategoryController::class, 'getEditCategory'])->name('getEditCategory');
-Route::post('/category/manage/edited/{category}', [CategoryController::class, 'postEditCategory'])->name('postEditCategory');
+Route::get('/category', [CategoryController::class, 'getAddCategory'])->middleware('auth')->name('getAddCategory');
+Route::post('/category/add', [CategoryController::class, 'postAddCategory'])->middleware('auth')->name('postAddCategory');
+Route::get('/category/manage', [CategoryController::class, 'getManageCategroy'])->middleware('auth')->name('getManageCategroy');
+Route::get('/category/manage/delete/{category}', [CategoryController::class, 'getDeleteCategory'])->middleware('auth')->name('getDeleteCategory');
+Route::get('/category/manage/edit/{category}', [CategoryController::class, 'getEditCategory'])->middleware('auth')->name('getEditCategory');
+Route::post('/category/manage/edited/{category}', [CategoryController::class, 'postEditCategory'])->middleware('auth')->name('postEditCategory');
 
 
 
 
-Route::get('/gallery', [GalleryController::class, 'getAddGallery'])->name('getAddGallery');
-Route::post('/gallery/add', [GalleryController::class, 'postAddGallery'])->name('postAddGallery');
-Route::get('/gallery/manage', [GalleryController::class, 'getManageGallery'])->name('getManageGallery');
-Route::get('/gallery/manage/delete/{gallery}', [GalleryController::class, 'getDeleteGallery'])->name('getDeleteGallery');
-Route::get('/gallery/manage/edit/{gallery}', [GalleryController::class, 'getEditGallery'])->name('getEditGallery');
-Route::post('/gallery/manage/edited/{gallery}', [GalleryController::class, 'postEditGallery'])->name('postEditGallery');
-
-
-
-
-
-Route::get('/product', [AddProductController::class, 'getAddProduct'])->name('getAddProduct');
-Route::post('/product/add', [AddProductController::class, 'postAddProduct'])->name('postAddProduct');
-Route::get('/product/manage', [AddProductController::class, 'getManageProduct'])->name('getManageProduct');
-Route::get('/product/manage/delete/{product}', [AddProductController::class, 'getDeleteProduct'])->name('getDeleteProduct');
-Route::get('/product/manage/edit/{product}', [AddProductController::class, 'getEditProduct'])->name('getEditProduct');
-Route::post('/product/manage/edited/{product}', [AddProductController::class, 'postEditProduct'])->name('postEditProduct');
+Route::get('/gallery', [GalleryController::class, 'getAddGallery'])->middleware('auth')->name('getAddGallery');
+Route::post('/gallery/add', [GalleryController::class, 'postAddGallery'])->middleware('auth')->name('postAddGallery');
+Route::get('/gallery/manage', [GalleryController::class, 'getManageGallery'])->middleware('auth')->name('getManageGallery');
+Route::get('/gallery/manage/delete/{gallery}', [GalleryController::class, 'getDeleteGallery'])->middleware('auth')->name('getDeleteGallery');
+Route::get('/gallery/manage/edit/{gallery}', [GalleryController::class, 'getEditGallery'])->middleware('auth')->name('getEditGallery');
+Route::post('/gallery/manage/edited/{gallery}', [GalleryController::class, 'postEditGallery'])->middleware('auth')->name('postEditGallery');
 
 
 
 
 
+Route::get('/product', [AddProductController::class, 'getAddProduct'])->middleware('auth')->name('getAddProduct');
+Route::post('/product/add', [AddProductController::class, 'postAddProduct'])->middleware('auth')->name('postAddProduct');
+Route::get('/product/manage', [AddProductController::class, 'getManageProduct'])->middleware('auth')->name('getManageProduct');
+Route::get('/product/manage/delete/{product}', [AddProductController::class, 'getDeleteProduct'])->middleware('auth')->name('getDeleteProduct');
+Route::get('/product/manage/edit/{product}', [AddProductController::class, 'getEditProduct'])->middleware('auth')->name('getEditProduct');
+Route::post('/product/manage/edited/{product}', [AddProductController::class, 'postEditProduct'])->middleware('auth')->name('postEditProduct');
 
 
 
-Route::get('/media', [MediaController::class, 'getAddMedia'])->name('getAddMedia');
-Route::post('/media/add', [MediaController::class, 'postAddMedia'])->name('postAddMedia');
-Route::get('/media/manage', [MediaController::class, 'getManageMedia'])->name('getManageMedia');
-Route::get('/media/manage/delete/{media}', [MediaController::class, 'getDeleteMedia'])->name('getDeleteMedia');
-Route::get('/media/manage/edit/{media}', [MediaController::class, 'getEditMedia'])->name('getEditMedia');
-Route::post('/media/manage/edited/{media}', [MediaController::class, 'postEditMedia'])->name('postEditMedia');
+
+
+
+
+
+Route::get('/media', [MediaController::class, 'getAddMedia'])->middleware('auth')->name('getAddMedia');
+Route::post('/media/add', [MediaController::class, 'postAddMedia'])->middleware('auth')->name('postAddMedia');
+Route::get('/media/manage', [MediaController::class, 'getManageMedia'])->middleware('auth')->name('getManageMedia');
+Route::get('/media/manage/delete/{media}', [MediaController::class, 'getDeleteMedia'])->middleware('auth')->name('getDeleteMedia');
+Route::get('/media/manage/edit/{media}', [MediaController::class, 'getEditMedia'])->middleware('auth')->name('getEditMedia');
+Route::post('/media/manage/edited/{media}', [MediaController::class, 'postEditMedia'])->middleware('auth')->name('postEditMedia');

@@ -5,8 +5,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h1 class="product_taital">Our Products</h1>
-                <p class="product_text">incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation</p>
+                <p class="product_text">Our latest Product on our site</p>
             </div>
         </div>
         <div class="product_section_2 layout_padding">
@@ -21,8 +20,10 @@
                         <div class="btn_main">
                             <div class="buy_bt">
                                 <ul>
-                                    <li><a href="#">Add Cart </a></li>
-                                    <li><a href="#">Buy Now</a></li>
+                                    <li><a href="#" class="p-2">Add Cart </a>
+
+                                    </li>
+                                    <li><a href="#" class="p-2">Buy Now</a></li>
                                 </ul>
                             </div>
                             <h3 class="price_text">Price <br>Rs.{{$product->product_cost}}</h3>

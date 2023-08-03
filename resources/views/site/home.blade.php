@@ -46,9 +46,9 @@
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <a href="{{route('getHome')}}">Home</a>
                     <a href="{{route('getProduct')}}">Products</a>
-                    <a href="about.html">About</a>
-                    <a href="client.html">Client</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="#!">About</a>
+                    <a href="#!">Client</a>
+                    <a href="#!">Contact</a>
                 </div>
                 <span class="toggle_icon" onclick="openNav()"><img
                         src="{{asset('site/images/toggle-icon.png')}}"></span>
@@ -140,8 +140,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h1 class="product_taital">Our Products</h1>
-                    <p class="product_text">incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation</p>
+                    <p class="product_text">Our latest Product on our site</p>
                 </div>
             </div>
             <div class="product_section_2 layout_padding">
