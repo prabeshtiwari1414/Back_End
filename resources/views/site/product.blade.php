@@ -20,7 +20,7 @@
                         <div class="btn_main">
                             <div class="buy_bt">
                                 <ul>
-                                    <li><a href="#" class="p-2">Add Cart </a>
+                                    <li><a href="{{route('getAddCart', $product->id)}}" class="p-2">Add Cart </a>
 
                                     </li>
                                     <li><a href="#" class="p-2">Buy Now</a></li>

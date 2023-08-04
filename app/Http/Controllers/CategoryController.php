@@ -69,19 +69,17 @@ class CategoryController extends Controller
    
     public function postEditCategory(Request $request, category $category){
             $photo = $request->file('photo');
+            $category->title = $request->input('title');
+            $category->details = $request->input('details');
             if($photo){
     
                 $time=md5(time()).'.'.$photo->getClientOriginalExtension();
                 $photo->move('site/uploads/category/',$time);
     
-                $category->title = $request->input('title');
-                $category->details = $request->input('details');
                 $category->photo = $time;
                 $category->save();
             }
             else{
-                $category->title = $request->input('title');
-                $category->details = $request->input('details');
                 $category->save();
             }
            

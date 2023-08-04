@@ -57,7 +57,8 @@
                     <div class="login_text">
                         <ul>
                             <li><a href="#"><img src="{{asset('site/images/user-icon.png')}}"></a></li>
-                            <li><a href="#"><img src="{{asset('site/images/bag-icon.png')}}"></a></li>
+                            <li><a href="{{route('getCart')}}"><img src="{{asset('site/images/bag-icon.png')}}"></a>
+                            </li>
                             <li><a href="#"><img src="{{asset('site/images/search-icon.png')}}"></a></li>
                         </ul>
                     </div>
@@ -155,7 +156,7 @@
                             <div class="btn_main">
                                 <div class="buy_bt">
                                     <ul>
-                                        <li><a href="#">Add Cart </a></li>
+                                        <li><a href="{{route('getAddCart', $product->id)}}">Add Cart </a></li>
                                         <li><a href="#">Buy Now</a></li>
                                     </ul>
                                 </div>
