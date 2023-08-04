@@ -29,10 +29,8 @@
                             <td>{{ $tabledata->qty }}</td>
                             <td>{{ $tabledata->cost }}</td>
                             <td>{{ $tabledata->totalcost }}</td>
-                            <td style="text-align: center;"> <a href="#"
-                                    class="text-secondary font-weight-bold text-xs">
-                                    <button class=" bg-danger text-light btn-lg"><b><i
-                                                class="material-icons">Remove</i></b></button>
+                            <td style="text-align: center;"> <a href="{{route('deletecarts', $tabledata->id)}}"
+                                    class="text-secondary btn text-light btn-danger font-weight-bold text-xs"><b>Remove</b>
                                 </a></td>
                         </tr>
                     </tbody>

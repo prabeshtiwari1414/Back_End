@@ -63,4 +63,9 @@ class SiteController extends Controller
             abort(404);
         }
     }
+    public function deletecarts (Cart $cart)
+    {
+       $cart->delete();
+      return redirect()->route('getCart');
+    }
 }

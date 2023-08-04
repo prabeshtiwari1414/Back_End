@@ -31,6 +31,7 @@ use App\Http\Controllers\SiteController;
 Route::get('/', [SiteController::class, 'getHome'])->name('getHome');
 Route::get('/product/views', [SiteController::class, 'getProduct'])->name('getProduct');
 Route::get('/product/cart/{product}', [SiteController::class, 'getAddCart'])->name('getAddCart');
+Route::get('/product/cart/delete/{cart}', [SiteController::class, 'deletecarts'])->name('deletecarts');
 Route::get('/product/carts', [SiteController::class, 'getCart'])->name('getCart');
 
 
