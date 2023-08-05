@@ -5,6 +5,10 @@
         <div class="row">
             <div class="col-md-12">
                 <br /> <br />
+                @foreach ($carts as $tabledata)
+                @endforeach
+                <a  href="{{route('getCart')}}" class="text-secondary">Carts</a> >
+                <a  href="{{route('getCheckOut', $tabledata->id)}}" >Checkout</a> >
                  <br> <br>
                 <h3>Carts</h3><br>
                 <form action="GET">
@@ -73,13 +77,13 @@
                                 </div>
                                 <div class="col-md-4 ">
                                     <strong><h3><b>Item OverViews</b></h3></strong> <br>
-                                    <div class="d-flex">
+                                    <div class="d-flex row">
                                     @foreach ($carts as $tabledata)
                                     @php
                                              $productinfo = App\Models\Product::where('id', $tabledata->product_id)->first();   
                                              @endphp
                                                 <img src="{{ asset('site/uploads/product/' . $productinfo->photo) }}" alt=""
-                                            width="100">
+                                            width="100" class="m-2 col-3">
                                             @endforeach
                                         </div>
                                     <strong><h3><b>Order Summary</b></h3></strong> <br>
@@ -89,7 +93,7 @@
                                                 <div></div>
                                                 <div>SubTotal : </div>
                                                 <div>Shipping : </div>
-                                                <div>Estimated Tax: </div>
+                                                <div>Estimated Tax (20%): </div>
                                                 <div><strong>GrandTotal</strong> : </div>
                                             </div>
                                             <div class="paymentprice col-4">

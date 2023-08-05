@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <br /> <br />
-                    <a  href="{{route('getCart')}}">Carts</a>
+                    <a  href="{{route('getCart')}}">Carts</a> >
                  <br> <br>
                 <h3>Carts</h3>
 
