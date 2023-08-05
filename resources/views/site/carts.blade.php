@@ -25,7 +25,7 @@
                         <tr>
                             <td><img src="{{ asset('site/uploads/product/' . $productinfo->photo) }}" alt=""
                                     width="100"></td>
-                            <td>{{ $productinfo->title }}</td>
+                            <td>{{ $productinfo->product_title }}</td>
                             <td>{{ $tabledata->qty }}</td>
                             <td>{{ $tabledata->cost }}</td>
                             <td>{{ $tabledata->totalcost }}</td>
@@ -37,12 +37,12 @@
                     @endforeach
 
                 </table>
-
+                <div class="seemore_bt"><a href="{{route('getProduct')}}">See More Product</a></div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a href="" class="btn btn-primary">Checkout</a>
+                <a href="{{route('getCheckOut')}}" class="btn btn-primary">Checkout</a>
             </div>
         </div>
     </div>

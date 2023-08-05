@@ -33,6 +33,7 @@ Route::get('/product/views', [SiteController::class, 'getProduct'])->name('getPr
 Route::get('/product/cart/{product}', [SiteController::class, 'getAddCart'])->name('getAddCart');
 Route::get('/product/cart/delete/{cart}', [SiteController::class, 'deletecarts'])->name('deletecarts');
 Route::get('/product/carts', [SiteController::class, 'getCart'])->name('getCart');
+Route::get('/product/carts/checkout', [SiteController::class, 'getCheckOut'])->name('getCheckOut');
 
 
 

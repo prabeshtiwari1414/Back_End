@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
     use HasFactory;
+    public static function hasCartItem($cartCode)
+    {
+        return static::where('code', $cartCode)->exists();
+    }
 }

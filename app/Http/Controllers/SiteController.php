@@ -62,10 +62,25 @@ class SiteController extends Controller
         else{
             abort(404);
         }
+        
     }
     public function deletecarts (Cart $cart)
     {
-       $cart->delete();
-      return redirect()->route('getCart');
+        if(Session::get('cartcode')==$cart->code){
+            $cart->delete();
+            return redirect()->route('getCart');
+        }
+        else{
+            dd('this cart not belong you');
+        }
     }
+    public function getCheckOut(Cart $cart){
+        if(Cart::hasCartItem(Session::get('cartcode'))){
+                 return view('site.checkout');
+        }
+        else{
+            abort(404);
+        }
+    }
+
 }
