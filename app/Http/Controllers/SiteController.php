@@ -64,6 +64,9 @@ class SiteController extends Controller
         }
         
     }
+    public function editcarts(){
+        dd('edit');
+    }
     public function deletecarts (Cart $cart)
     {
         if(Session::get('cartcode')==$cart->code){
@@ -75,8 +78,14 @@ class SiteController extends Controller
         }
     }
     public function getCheckOut(Cart $cart){
+        
+        
         if(Cart::hasCartItem(Session::get('cartcode'))){
-                 return view('site.checkout');
+            $cartcode = Session::get('cartcode');
+        $data =[
+            'carts' => Cart::where('code', $cartcode)->get()
+        ];
+                 return view('site.checkout', $data);
         }
         else{
             abort(404);
