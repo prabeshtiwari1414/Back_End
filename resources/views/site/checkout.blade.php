@@ -16,27 +16,25 @@
                     <div class="row">
                         <div class="col-md-8">
                                     <div class="col-md-4">
-                                      <label for="validationCustom01" class="form-label">First name</label>
-                                      <input type="text" class="form-control" id="validationCustom01"  name="firstname" required>
+                                      <label  >First name</label>
+                                      <input type="text"    name="firstname" required>
                                     
                                     </div>
                                     <div class="col-md-4">
-                                      <label for="validationCustom02" class="form-label">Last name</label>
-                                      <input type="text" class="form-control" id="validationCustom02" name="secondname" required>
+                                      <label  >Last name</label>
+                                      <input type="text"   name="secondname" required>
                                       
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="validationCustom2" class="form-label">E-mail</label>
-                                      <div class="input-group has-validation">
-                                        <input type="mail" class="form-control" id="validationCustomUsername" name="email" aria-describedby="inputGroupPrepend" required>
-                                        <div class="invalid-feedback">
-                                          E-Mail
-                                        </div>
+                                        <label  >E-mail</label>
+                                      <div>
+                                        <input type="mail"   name="email"  required>
+                                       
                                       </div>
                                     </div>
                                     <div class="col-md-3">
-                                      <label for="validationCustom04" class="form-label">State</label>
-                                      <select class="form-select" id="validationCustom04" name="State" required>
+                                      <label  >State</label>
+                                      <select class="form-select"  name="State" required>
                                         <option value="Province-1">Province-1</option>
                                         <option value="Madesh">Madesh</option>
                                         <option value="Bagmati">Bagmati</option>
@@ -45,30 +43,24 @@
                                         <option value="Karnali">Karnali</option>
                                         <option value="SudurPaschim">SudurPaschim</option>
                                       </select>
-                                      <div class="invalid-feedback">
-                                        Please select a valid state.
-                                      </div>
+                                      
                                     </div>
-                                    <div class="col-md-6">
-                                      <label for="validationCustom03" class="form-label">City</label>
-                                      <input type="text" class="form-control" id="validationCustom03" name="city" required>
-                                      <div class="invalid-feedback">
-                                        Please provide a valid city.
-                                      </div>
+                                    <div class="col-md-6 mt-2">
+                                      <label  >City</label> <br>
+                                      <input type="text"   name="city" required>
+                                     
                                     </div>
                                     <div class="col-md-3">
-                                      <label for="validationCustom05" class="form-label">Zip</label>
-                                      <input type="text" class="form-control" name="zipcode" id="validationCustom05" required>
-                                      <div class="invalid-feedback">
-                                        Please provide a valid zip.
-                                      </div>
+                                      <label  >Zip</label>
+                                      <input type="text"  name="zipcode"  required>
+                                      
                                     </div>
                                     <div class="cocl-md-3">
-                                        <label for="validationCustom05" class="form-label">Payment Method</label> <br>
+                                        <label  >Payment Method</label> <br>
                                         <input type="radio" name="paymethod">
-                                        <label for="validationCustom05" class="form-label" id="paymethod" value="esewa">eSewa</label>
+                                        <label   id="paymethod" value="esewa">eSewa</label>
                                         <input type="radio" name="paymethod">
-                                        <label for="validationCustom05" class="form-label" id="paymethod" value="cod">COD</label>
+                                        <label   id="paymethod" value="cod">COD</label>
                                     </div>
                                     
                                     <div class="col-12 mt-2 ">
@@ -93,14 +85,14 @@
                                                 <div></div>
                                                 <div>SubTotal : </div>
                                                 <div>Shipping : </div>
-                                                <div>Estimated Tax (20%): </div>
+                                                <div>Estimated Tax (13%): </div>
                                                 <div><strong>GrandTotal</strong> : </div>
                                             </div>
                                             <div class="paymentprice col-4">
                                                 @php
                                                     $subtotal = 0; // Initialize the grand total variable
                                                     $shippingCharge = 200;
-                                                    $taxPercentage = 0.20;
+                                                    $taxPercentage = 0.13;
                                                     $grandTotal = 0;
                                                 @endphp
 

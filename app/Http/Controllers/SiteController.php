@@ -26,7 +26,6 @@ class SiteController extends Controller
     public function getAddCart(Product $product){
         $code =Str::random(6);
         $qty = 1;
-        
         if(Session::get('cartcode')){
             
             $cart = New Cart;
@@ -64,8 +63,30 @@ class SiteController extends Controller
         }
         
     }
-    public function editcarts(){
-        dd('edit');
+    public function getEditCarts(Cart $cart){
+        if(Session::get('cartcode')==$cart->code){
+            $data = ['cart' => $cart];
+            return view('site.editcarts', $data);
+        }
+        else{
+            dd('this cart not belong you');
+        }
+       
+    }
+    public function postEditCart(Request $request, Cart $cart,){
+        
+        if(Session::get('cartcode')==$cart->code){
+            $request->validate([
+                'qty' => 'required|integer|min:1',
+            ]);
+            $qty = $request->input('qty');
+            $cart->qty = $qty;
+            $cart->totalcost = $cart->cost*$qty;
+            $code = Session::get('cartcode');
+            $cart->code = $code;
+            $cart->save();
+            return redirect()->route('getCart');
+        }
     }
     public function deletecarts (Cart $cart)
     {
