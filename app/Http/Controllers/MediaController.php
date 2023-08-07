@@ -74,7 +74,7 @@ class MediaController extends Controller
     }
     public function postEditMedia(Request $request, Media $media){
         $photo = $request->file('media_icon');
-        if($photo){
+         if($photo){
 
             $time=md5(time()).'.'.$photo->getClientOriginalExtension();
             $photo->move('site/uploads/media/',$time);

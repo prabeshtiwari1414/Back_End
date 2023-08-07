@@ -8,15 +8,20 @@
                     <a  href="{{route('getCart')}}">Carts</a> >
                  <br> <br>
                 <h3>Carts</h3>
-
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col">Photo</th>
-                            <th scope="col">Product</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Cost</th>
-                            <th scope="col">Total</th>
+                            <div class="container">
+                                <div class="row">
+                                    
+                                    <th scope="col-3">Photo</th>
+                                    <th scope="col-3">Product</th>
+                                    <th scope="col-3">Quantity <br><h6>(You can eidt this via edit option)</h6></th>
+                                    <th scope="col-3">Cost</th>
+                                    <th scope="col-3">Total</th>
+                                    <th scope="col-3">State</th>
+                                </div>
+                            </div>
                         </tr>
                     </thead>
                     @foreach ($carts as $tabledata)
@@ -25,13 +30,14 @@
                     @endphp
                     <tbody>
                         <tr>
-                            <td><img src="{{ asset('site/uploads/product/' . $productinfo->photo) }}" alt=""
+                            <td class="col-2"><img src="{{ asset('site/uploads/product/' . $productinfo->photo) }}" alt=""
                                     width="100"></td>
-                            <td>{{ $productinfo->product_title }}</td>
-                            <td>{{ $tabledata->qty }}</td>
-                            <td>{{ $tabledata->cost }}</td>
-                            <td>{{ $tabledata->totalcost }}</td>
-                            <td style="text-align: center;"> 
+                            <td class="col-3">{{ $productinfo->product_title }}</td>
+                            <td class="col-2">{{ $tabledata->qty }}</td>
+                            <td class="col-1">{{ $tabledata->cost }}</td>
+                            <td class="col-1">{{ $tabledata->totalcost }}</td>
+                            
+                            <td class="col-3" style="text-align: center;"> 
                                 <a href="{{route('editcartss', $tabledata->id)}}"
                                     class="text-secondary btn text-light btn-primary font-weight-bold text-xs"><b>Edit</b> 
                                 </a> |

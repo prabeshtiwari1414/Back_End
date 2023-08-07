@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Shippingcharge;
+
 
 class AddProductController extends Controller
 {
@@ -51,7 +53,7 @@ class AddProductController extends Controller
              $product->category                =   $category;
              $product->product_title           =   $product_title;
              $product->product_cost            =   $product_cost;
-             $product->product_status          =   $product_status;
+             $product->status          =   $product_status;
              $product->product_details         =   $product_details;
              $product->photo                   =   $time;
              $product->save();
@@ -78,7 +80,7 @@ class AddProductController extends Controller
                 $product->product_title = $request->input('product_title');
                 $product->product_cost = $request->input('product_cost');
                 $product->product_details = $request->input('product_details');
-                $product->product_status = $request->input('product_status');
+                $product->status = $request->input('product_status');
             if($photo){
     
                 $time=md5(time()).'.'.$photo->getClientOriginalExtension();
@@ -91,5 +93,42 @@ class AddProductController extends Controller
 
            
             return redirect()->route('getManageProduct');    
-        }
+    }
+    public function getShippingProduct(){
+        return view('admin.product.productshipping');
+    }
+    public function postShippingCharge(Request $request){
+                 $request->validate([
+                         'state'=> 'required',
+                         'shipping_charge'=> 'required',
+                        'shipping_status'=> 'required',
+                        ]);
+                $state      =   $request->state;
+                $shipping_charge       =      $request->shipping_charge;
+             $shipping_status     =    $request->shipping_status;
+             $shipping = new Shippingcharge;
+             $shipping->state                =   $state;
+             $shipping->shipping_charge = $shipping_charge;
+             $shipping->status          =   $shipping_status;
+             $shipping->save();
+            return redirect()->route('getManageShipping');    
+
+    }
+    public function getManageShipping()
+    {
+        $shipping=Shippingcharge::all();
+       
+       
+        return view('admin.product.manageshipping',[
+            'shipping' => $shipping
+        ]); 
+    }
+    public function getDeleteCharge(Shippingcharge $shipping){
+        $shipping->delete();
+        return redirect()->route('getManageShipping');    
+
+       
+    }
+    
+        
 }

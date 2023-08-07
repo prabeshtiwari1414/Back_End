@@ -106,7 +106,7 @@
                                                     
                                                     @endforeach
                                                     @php
-                                                     if ($subtotal > 1000) {
+                                                     if ($subtotal > 2000) {
                                                         $shippingCharge = 0;
                                                      }
                                                      $taxAmount = $subtotal * $taxPercentage;

@@ -1,5 +1,5 @@
 <x-layout bodyClass="g-sidenav-show  bg-gray-200">
-    <x-navbars.sidebar activePage="manageproduct"></x-navbars.sidebar>
+    <x-navbars.sidebar activePage="manageproductshipping"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
         <x-navbars.navs.auth titlePage="Manage Product"></x-navbars.navs.auth>
@@ -31,73 +31,54 @@
                                             <thead>
                                                 <tr>
                                                     <th
-                                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                        Category</th>
+                                                        class="text-uppercase text-center text-secondary text-xxs font-weight-bolder opacity-7">
+                                                        State</th>
 
                                                     <th
                                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                        Product title</th>
-                                                    <th
-                                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                        Deatils</th>
-                                                    <th
-                                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                        Product Cost</th>
+                                                        Shipping Charge</th>
+                                                    
                                                     <th
                                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                         Status</th>
-                                                    <th
+                                                        <th
                                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                        Created At</th>
+                                                        Create At</th>
+                                                    
 
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($products as $pdt)
+                                                @foreach($shipping as $shs)
                                                 <tr>
                                                     <td class="align-middle text-center text-sm">
                                                         <span
-                                                            class="badge badge-sm bg-gradient-success">{{$pdt->category}}</span>
+                                                            class="badge badge-sm bg-gradient-success">{{$shs->state}}</span>
                                                     </td>
                                                     <td>
-                                                        <div class="d-flex px-2 py-1">
-                                                            <div>
-                                                                <img src="{{ asset('site/uploads/product/'.$pdt->photo) }}"
-                                                                    class="avatar avatar-sm me-3 border-radius-lg"
-                                                                    alt="user1">
-                                                            </div>
-                                                            <div class="d-flex flex-column justify-content-center">
-                                                                <h6 class="mb-0 text-sm">{{$pdt->product_title}}
-                                                                </h6>
-                                                                </p>
-                                                            </div>
+                                                       <div class="d-flex text-center flex-column justify-content-center">
+                                                            <h6 class="mb-0 text-sm">{{$shs->shipping_charge}}
+                                                            </h6>
                                                         </div>
                                                     </td>
 
+                                                    
                                                     <td class="align-middle text-center text-sm">
                                                         <span
-                                                            class="badge badge-sm bg-gradient-success">{{$pdt->product_details}}</span>
-                                                    </td>
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span class="badge badge-sm bg-gradient-success">Rs.
-                                                            {{$pdt->product_cost}}</span>
-                                                    </td>
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span
-                                                            class="badge badge-sm bg-gradient-success">{{$pdt->status}}</span>
+                                                            class="badge badge-sm bg-gradient-success">{{$shs->status}}</span>
                                                     </td>
                                                     <td class="align-middle text-center">
                                                         <span
-                                                            class="text-secondary text-xs font-weight-bold">{{$pdt->created_at}}</span>
+                                                            class="text-secondary text-xs font-weight-bold">{{$shs->created_at}}</span>
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="{{ route('getEditProduct', $pdt->id) }}"
+                                                        <a href="#!"
                                                             class="text-secondary font-weight-bold text-xs"
                                                             data-toggle="tooltip" data-original-title="Edit user">
                                                             <button class="bg-info text-light btn-lg"><b><i
                                                                         class="material-icons">edit</i></b></button>
                                                         </a>
-                                                        | <a href="{{ route('getDeleteProduct', $pdt->id) }}"
+                                                        | <a href="{{ route('getDeleteCharge', $shs->id) }}"
                                                             class="text-secondary font-weight-bold text-xs"
                                                             data-toggle="tooltip" data-original-title="Edit user">
                                                             <button class="bg-primary text-light btn-lg"><b><i
@@ -108,7 +89,6 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
-                                        {{$products -> links()}}
                                     </div>
                                 </div>
                             </div>

@@ -1,9 +1,9 @@
 <x-layout bodyClass="g-sidenav-show bg-gray-200">
 
-    <x-navbars.sidebar activePage="category"></x-navbars.sidebar>
+    <x-navbars.sidebar activePage="manageshippingproduct"></x-navbars.sidebar>
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
         <!-- Navbar -->
-        <x-navbars.navs.auth titlePage='Category'></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage='Shipping Product Charge'></x-navbars.navs.auth>
         <!-- End Navbar -->
         <div class="container-fluid px-2 px-md-4">
             <div class="page-header min-height-300 border-radius-xl mt-4"
@@ -21,7 +21,7 @@
                     <div class="col-auto my-auto">
                         <div class="h-100">
                             <h5 class="mb-1">
-                                Add Category
+                                 Shipping Charge
                             </h5>
 
                         </div>
@@ -55,37 +55,54 @@
 
                         </div>
                         @endif
-                        <form method='POST' action="{{route('postAddCategory')}}" enctype="multipart/form-data">
+
+                        <form method='POST' action="{{route('postShippingCharge')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
 
                                 <div class="mb-3 col-md-6">
-                                    <label class="form-label">Title</label>
-                                    <input type="text" value="{{old('title')}}" name="title"
-                                        class="form-control border border-2 p-2">
-                                    @error('title')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                        <label >State</label>
+                                        <select class="form-select border-solid"  name="state" required>
+                                          <option value="Province-1">Province-1</option>
+                                          <option value="Madesh">Madesh</option>
+                                          <option value="Bagmati">Bagmati</option>
+                                          <option value="Gandaki">Gandaki</option>
+                                          <option value="Lumbini">Lumbini</option>
+                                          <option value="Karnali">Karnali</option>
+                                          <option value="SudurPaschim">SudurPaschim</option>
+                                        </select>
+                                    @error('shipping')
+                                    <p class='text-danger inputerror'><b>{{ $message }}</b> </p>
                                     @enderror
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label class="form-label">Photo</label>
-                                    <input type="file" name="photo" class="form-control border border-2 p-2">
-                                    @error('photo')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
-                                    @enderror
-                                </div>
-
-
-
+                                    <label>Shipping Charge</label> <br>
                                 <div class="mb-3 col-md-12">
-                                    <label for="floatingTextarea2">Details</label>
-                                    <textarea class="form-control border border-2 p-2"
-                                        placeholder=" Say something about your add category" id="floatingTextarea2"
-                                        name="details" rows="4" cols="50">{{old('details')}}</textarea>
-                                    @error('details')
-                                    <p class='text-danger inputerror'>{{ $message }} </p>
-                                    @enderror
+
+                                    <input type="number" name="shipping_charge">
                                 </div>
+                                @error('shipping')
+                                <p class='text-danger inputerror'><b>{{ $message }}</b> </p>
+                                @enderror
+                            </div>
+                                <div class="mb-3 col-md-12">
+                                    <label class="form-label">Shipping Status</label> <br>
+                                    <input type="radio" id="shipping_status" name="shipping_status" value="show"
+                                        {{ old('shipping_status') === 'show' ? 'checked' : '' }}>
+                                    <label for="shipping_status">Show</label><br>
+                                    <input type="radio" id="shipping_status" name="shipping_status" value="hide"
+                                        {{ old('shipping_status') === 'hide' ? 'checked' : '' }}>
+                                    <label for=" shipping_status">Hide</label><br>
+                                    @error('shipping_status')
+                                    <p class='text-danger  inputerror'><b>{{ $message }}</b> </p>
+                                    @enderror
+
+
+                                </div>
+
+
+
+
                             </div>
 
                             <button type="submit" class="btn bg-gradient-dark">Submit</button>

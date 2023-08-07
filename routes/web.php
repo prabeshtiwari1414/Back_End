@@ -36,6 +36,8 @@ Route::get('/product/cart/edit/{cart}', [SiteController::class, 'getEditCarts'])
 Route::put('/product/cart/update/{cart}', [SiteController::class, 'postEditCart'])->name('updatecart');
 Route::get('/product/carts', [SiteController::class, 'getCart'])->name('getCart');
 Route::get('/product/carts/checkout/{cart}', [SiteController::class, 'getCheckOut'])->name('getCheckOut');
+Route::post('/product/carts/itemoverviews/', [SiteController::class, 'postCheckOut'])->name('postCheckOut');
+Route::post('/product/carts/itemoverviews/{cart}', [SiteController::class, 'itemoverview'])->name('itemoverview');
 
 
 
@@ -115,6 +117,11 @@ Route::get('/product/manage', [AddProductController::class, 'getManageProduct'])
 Route::get('/product/manage/delete/{product}', [AddProductController::class, 'getDeleteProduct'])->middleware('auth')->name('getDeleteProduct');
 Route::get('/product/manage/edit/{product}', [AddProductController::class, 'getEditProduct'])->middleware('auth')->name('getEditProduct');
 Route::post('/product/manage/edited/{product}', [AddProductController::class, 'postEditProduct'])->middleware('auth')->name('postEditProduct');
+Route::get('/product/manage/shippingcharge', [AddProductController::class, 'getShippingProduct'])->middleware('auth')->name('getShippingProduct');
+Route::post('/product/shippingcharge', [AddProductController::class, 'postShippingCharge'])->middleware('auth')->name('postShippingCharge');
+Route::get('/product/shippingcharge/manage', [AddProductController::class, 'getManageShipping'])->middleware('auth')->name('getManageShipping');
+Route::get('/product/shippingcharge/manage/{shipping}', [AddProductController::class, 'getDeleteCharge'])->middleware('auth')->name('getDeleteCharge');
+
 
 
 

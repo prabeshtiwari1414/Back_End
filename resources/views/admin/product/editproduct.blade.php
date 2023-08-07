@@ -115,12 +115,12 @@
                                     <label class="form-label">Product Status</label> <br>
 
                                     <input type="radio" id="product_status" name="product_status" value="show"
-                                        {{ $product->product_status == 'show' ? 'checked' : ''  }}>
+                                        {{ $product->status == 'Show' ? 'checked' : ''  }}>
 
                                     <label for="product_status">Show</label><br>
 
                                     <input type="radio" id="product_status" name="product_status" value="hide"
-                                        {{ $product->product_status == 'hide' ? 'checked' : ''  }}>
+                                        {{ $product->status == 'Hide' ? 'checked' : ''  }}>
                                     <label for=" product_status">Hide</label><br>
 
 
