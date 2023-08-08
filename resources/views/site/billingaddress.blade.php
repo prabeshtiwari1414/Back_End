@@ -3,7 +3,7 @@
 <div id="card" style="padding:50px 0">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <br /> <br />
                 @foreach ($carts as $tabledata)
                 @endforeach
@@ -36,13 +36,10 @@
                                     <div class="col-md-3">
                                       <label  >State</label>
                                       <select class="form-select"  name="state" required>
-                                        <option value="Province-1">Province-1</option>
-                                        <option value="Madesh">Madesh</option>
-                                        <option value="Bagmati">Bagmati</option>
-                                        <option value="Gandaki">Gandaki</option>
-                                        <option value="Lumbini">Lumbini</option>
-                                        <option value="Karnali">Karnali</option>
-                                        <option value="SudurPaschim">SudurPaschim</option>
+                                        @foreach($shipping as $crg)
+                                        <option value="{{$crg->shipping_charge}}">{{$crg->state}}</option>
+                                        @endforeach
+                                        
                                       </select>
                                     </div>
                                     <div class="col-md-6 mt-2">
@@ -62,16 +59,29 @@
                                         <input type="radio" value="cod" name="paymethod">
                                         <label   id="paymethod" >COD</label>
                                     </div>
-                                    
                                     <div class="col-12 mt-2 ">
                                       <button class=" btn btn-primary" type="submit">Submit form</button>
                                     </div>
                                 </div>
                                 
                             </form>
+                    
+                    <div class="col-md-4">
+                      <table>
+                        <tr>
+                          <th class="p-2">State</th>
+                          <th class="p-2">Charge</th>
+                        </tr>
+                        @foreach($shipping as $crg)
+                        <tr>
+                          <td class="p-2">{{$crg->state}}</td>
+                          <td class="p-2">{{$crg->shipping_charge}}</td>
+                        </tr>
+                        @endforeach
+                      </table>
                     </div>
-                </div>
-            </div>
+                  </div>
+                </div> 
         </div>
     </div>
 </div>

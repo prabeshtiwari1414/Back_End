@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('secondname');
             $table->string('email');
-            $table->string('state');
+            $table->string('charge');
             $table->string('city');
             $table->integer('zipcode');
             $table->string('paymethod');

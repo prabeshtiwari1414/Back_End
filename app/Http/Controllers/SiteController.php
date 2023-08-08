@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Billingaddress;
+use App\Models\Shippingcharge;
 use Session;
 
 class SiteController extends Controller
@@ -107,18 +108,26 @@ class SiteController extends Controller
         $data =[
             'carts' => Cart::where('code', $cartcode)->get()
         ];
-                 return view('site.billingaddress', $data);
+        
+        
+        $crg = [
+            'shipping' => Shippingcharge::latest()->get(),
+        ];
+       
+                 return view('site.billingaddress', $data, $crg);
         }
         else{
             abort(404);
         }
     }
     public function postBillingAddress(Request $request){
+        $cartcode = Session::get('id');
         $request->validate([
             'firstname'=> 'required',
             'secondname'=> 'required',
             'email'=> 'required',
             'state'=> 'required',
+            
             'city'=> 'required',
             'zipcode'=> 'required',
             'paymethod'=> 'required | in:esewa,cod',
@@ -139,11 +148,41 @@ class SiteController extends Controller
         $bill->firstname            = $firstname;
         $bill->secondname           = $secondname;
         $bill->email                = $email;
-        $bill->state                = $state;
+        $bill->charge                = $state;
         $bill->city                 = $city;
         $bill->zipcode              = $zipcode;
         $bill->paymethod            = $paymethod;
         $bill->save();
+
+        if(Session::get('cartcode'))
+        {
+            $cartcode = Session::get('cartcode');
+            $carts = Cart::where('code', $cartcode)->get();
+        }
+        else{
+            abort(404);
+        
+        }
+
+        // return $carts;
+        foreach ($carts as $key => $value) {
+            $id = $value->id;
+        }
+
+        return redirect()->route('getItemOverviews', $id);
+    }
+    
+    public function getItemOverviews(Cart $cart, Billingaddress $billing, Shippingcharge $shp ){
+        if(Cart::hasCartItem(Session::get('cartcode'))){
+            $cartcode = Session::get('cartcode');
+        $data =[
+            'carts' => Cart::where('code', $cartcode)->get()
+        ];
+                 return view('site.itemoverviews', $data);
+        }
+        else{
+            abort(404);
+        }
     }
    
 
