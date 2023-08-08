@@ -55,7 +55,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <a href="{{route('getCheckOut', $tabledata->id)}}" class="btn btn-primary">Checkout</a>
+                <a href="{{route('getBillingAddress', $tabledata->id)}}" class="btn btn-primary">Next</a>
             </div>
         </div>
     </div>

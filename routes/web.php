@@ -35,9 +35,10 @@ Route::get('/product/cart/delete/{cart}', [SiteController::class, 'deletecarts']
 Route::get('/product/cart/edit/{cart}', [SiteController::class, 'getEditCarts'])->name('editcartss');
 Route::put('/product/cart/update/{cart}', [SiteController::class, 'postEditCart'])->name('updatecart');
 Route::get('/product/carts', [SiteController::class, 'getCart'])->name('getCart');
-Route::get('/product/carts/checkout/{cart}', [SiteController::class, 'getCheckOut'])->name('getCheckOut');
+Route::get('/product/carts/billingaddress/{cart}', [SiteController::class, 'getBillingAddress'])->name('getBillingAddress');
 Route::post('/product/carts/itemoverviews/', [SiteController::class, 'postCheckOut'])->name('postCheckOut');
-Route::post('/product/carts/itemoverviews/{cart}', [SiteController::class, 'itemoverview'])->name('itemoverview');
+Route::post('/product/carts/itemoverviews/{cart}', [SiteController::class, 'getItemOverviews'])->name('getItemOverviews');
+Route::post('/product/carts/addbillingaddress/{cart}', [SiteController::class, 'postBillingAddress'])->name('postBillingAddress');
 
 
 

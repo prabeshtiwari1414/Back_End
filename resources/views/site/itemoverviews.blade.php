@@ -1,7 +1,19 @@
 @extends('site.template')
 @section('content')
-<div class="col-md-4 ">
-    <strong><h3><b>Item OverViews</b></h3></strong> <br>
+<div id="card" style="padding:50px 0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <br /> <br />
+                @foreach ($carts as $tabledata)
+                @endforeach
+                <a  href="{{route('getCart')}}" class="text-secondary">Carts</a> >
+                <a  href="{{route('getBillingAddress', $tabledata->id)}}" >Billing Address</a> >
+                 <br> <br>
+                <h3>Billing Adderess</h3><br>
+                
+                <div class="col-md-4 ">
+                 <strong><h3><b>Item OverViews</b></h3></strong> <br>
       <div class="d-flex row">
       @foreach ($carts as $tabledata)
       @php
@@ -49,11 +61,19 @@
                        @endphp
                        
                        <div>{{$taxAmount}}</div>
-                      <div><strong>{{$grandTotal, $tabledata->id}}</strong></div>
+                      <div><strong>{{$grandTotal}}</strong></div>
                       
                </div>
            </ul>
 
       </table>
   </div>
+  
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
   @stop
+  

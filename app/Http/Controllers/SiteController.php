@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Billingaddress;
 use Session;
 
 class SiteController extends Controller
@@ -98,7 +99,7 @@ class SiteController extends Controller
             dd('this cart not belong you');
         }
     }
-    public function getCheckOut(Cart $cart){
+    public function getBillingAddress(Cart $cart){
         
         
         if(Cart::hasCartItem(Session::get('cartcode'))){
@@ -106,11 +107,44 @@ class SiteController extends Controller
         $data =[
             'carts' => Cart::where('code', $cartcode)->get()
         ];
-                 return view('site.checkout', $data);
+                 return view('site.billingaddress', $data);
         }
         else{
             abort(404);
         }
     }
+    public function postBillingAddress(Request $request){
+        $request->validate([
+            'firstname'=> 'required',
+            'secondname'=> 'required',
+            'email'=> 'required',
+            'state'=> 'required',
+            'city'=> 'required',
+            'zipcode'=> 'required',
+            'paymethod'=> 'required | in:esewa,cod',
+            
+        ]);
+        $firstname      =$request->firstname;    
+        $secondname     =$request->secondname;    
+        $email          =$request->email;    
+        $state          =$request->state;    
+        $city           =$request->city;    
+        $zipcode        =$request->zipcode;    
+        $paymethod      =$request->paymethod;
+
+
+        $bill = new Billingaddress;
+
+
+        $bill->firstname            = $firstname;
+        $bill->secondname           = $secondname;
+        $bill->email                = $email;
+        $bill->state                = $state;
+        $bill->city                 = $city;
+        $bill->zipcode              = $zipcode;
+        $bill->paymethod            = $paymethod;
+        $bill->save();
+    }
+   
 
 }
