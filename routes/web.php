@@ -37,7 +37,6 @@ Route::put('/product/cart/update/{cart}', [SiteController::class, 'postEditCart'
 Route::get('/product/carts', [SiteController::class, 'getCart'])->name('getCart');
 Route::get('/product/carts/billingaddress/{cart}', [SiteController::class, 'getBillingAddress'])->name('getBillingAddress');
 Route::post('/product/carts/addbillingaddress/{cart}', [SiteController::class, 'postBillingAddress'])->name('postBillingAddress');
-Route::get('/product/carts/itemoverviews/{cart}', [SiteController::class, 'getItemOverviews'])->name('getItemOverviews');
 
 
 

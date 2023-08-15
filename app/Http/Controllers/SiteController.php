@@ -168,22 +168,20 @@ class SiteController extends Controller
         foreach ($carts as $key => $value) {
             $id = $value->id;
         }
-
-        return redirect()->route('getItemOverviews', $id);
-    }
-    
-    public function getItemOverviews(Cart $cart, Billingaddress $billing, Shippingcharge $shp ){
         if(Cart::hasCartItem(Session::get('cartcode'))){
             $cartcode = Session::get('cartcode');
         $data =[
             'carts' => Cart::where('code', $cartcode)->get()
         ];
-                 return view('site.itemoverviews', $data);
+        dd('item order');
         }
         else{
             abort(404);
         }
+       
     }
+    
+  
    
 
 }
