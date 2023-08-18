@@ -14,10 +14,18 @@ class SiteController extends Controller
 {
     public function getHome(){
         $data= [
-            'products' => Product::where('status', 'show')->latest()->limit(8)->get(),
+            'products' => Product::where('status', 'show')->latest()->skip(1)->limit(8)->get(),
             
         ];
-        return view('site.home', $data);
+        $carouselactive= [
+            'carouselproductactive' => Product::where('status', 'show')->latest()->limit(1)->get(),
+            
+        ];
+        $carousel= [
+            'carouselproduct' => Product::where('status', 'show')->latest()->skip(1)->limit(3)->get(),
+            
+        ];
+        return view('site.home', array_merge($carouselactive, $data, $carousel));
     }
     public function getProduct(){
         $data= [
@@ -43,6 +51,10 @@ class SiteController extends Controller
         $existingCart->save();
         }
         else {
+            if (!$cartCode) {
+                $newCartCode = Str::random(6);
+                Session::put('cartcode', $newCartCode);
+            }
             $newCart = new Cart;
             $newCart->product_id = $productId;
             $newCart->qty = $qty;
@@ -50,12 +62,7 @@ class SiteController extends Controller
             $newCart->totalcost = $productCost * $qty;
             $newCart->code = $cartCode;
             $newCart->save();
-
-        if (!$cartCode) {
-            $newCartCode = Str::random(6);
-            Session::put('cartcode', $newCartCode);
-    }
-}
+        }
 
 return redirect()->route('getCart');
     }

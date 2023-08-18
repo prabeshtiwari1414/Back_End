@@ -14,7 +14,22 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="product_box">
                         <h4 class="bursh_text">{{$product->product_title}}</h4>
-                        <p class="lorem_text">{{$product->product_details}} </p>
+                        <p class="lorem_text">
+                            <?php
+                            $paragraph = $product->product_details; // Replace with the actual field containing your paragraph
+                            $maxLines = 1;
+
+                            $lines = explode("\n", wordwrap($paragraph, 25)); // Adjust the character limit as needed
+
+                            if (count($lines) > $maxLines) {
+                                echo implode("\n", array_slice($lines, 0, $maxLines));
+                                echo '<span class="read-more"><a href="#" class="text-secondary">    .. Read more</a></span>';
+                            } 
+                            else {
+                                echo $paragraph; 
+                            }
+                            ?> 
+                            </p>
                         <img src="{{ asset('site/uploads/product/'.$product->photo) }}" class="image_1">
 
                         <div class="btn_main">

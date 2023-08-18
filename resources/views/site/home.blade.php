@@ -68,69 +68,42 @@
     </div>
     <!-- header section end -->
     <!-- banner section start -->
-    <div class="banner_section layout_padding">
+    <div class="banner_section layout_padding" style="height: 80vh">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
+                @foreach($carouselproductactive as $cpa)
                 <div class="carousel-item active">
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm-6">
-                                <h1 class="banner_taital">Beauty <br>Kit</h1>
-                                <p class="banner_text">Ncididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                                <div class="read_bt"><a href="#">Buy Now</a></div>
+                            <div class="col-sm-8">
+                                <h1 class="banner_taital">{{$cpa->product_title}}</h1>
+                                <p class="banner_text">{{$cpa->product_details}}</p>
+                                <div class="read_bt"><a href="{{route('getAddCart', $cpa->id)}}">Buy Now</a></div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="banner_img"><img src="{{asset('site/images/banner-img.png')}}"></div>
+                            <div class="col-sm-4">
+                                <div class="banner_img"><img src="{{ asset('site/uploads/product/'.$cpa->photo) }}" ></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
+                @endforeach
+                @foreach($carouselproduct as $cp)
+                <div class="carousel-item ">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-6">
-                                <h1 class="banner_taital">Beauty <br>Kit</h1>
-                                <p class="banner_text">Ncididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                                <div class="read_bt"><a href="#">Buy Now</a></div>
+                                <h1 class="banner_taital">{{$cp->product_title}}</h1>
+                                <p class="banner_text">{{$cp->product_details}}</p>
+                                <div class="read_bt"><a href="{{route('getAddCart', $cp->id)}}">Buy Now</a></div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="banner_img"><img src="{{asset('site/images/banner-img.png')}}"></div>
+                                <div class="banner_img"><img src="{{ asset('site/uploads/product/'.$cp->photo) }}" ></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h1 class="banner_taital">Beauty <br>Kit</h1>
-                                <p class="banner_text">Ncididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                                <div class="read_bt"><a href="#">Buy Now</a></div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="banner_img"><img src="{{asset('site/images/banner-img.png')}}"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h1 class="banner_taital">Beauty <br>Kit</h1>
-                                <p class="banner_text">Ncididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                                <div class="read_bt"><a href="#">Buy Now</a></div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="banner_img"><img src="{{asset('site/images/banner-img.png')}}"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+                
             </div>
         </div>
     </div>
@@ -150,7 +123,22 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="product_box">
                             <h4 class="bursh_text">{{$product->product_title}}</h4>
-                            <p class="lorem_text">{{$product->product_details}} </p>
+                            <p class="lorem_text">
+                                <?php
+                                $paragraph = $cpa->product_details; // Replace with the actual field containing your paragraph
+                                $maxLines = 2;
+
+                                $lines = explode("\n", wordwrap($paragraph, 70)); // Adjust the character limit as needed
+
+                                if (count($lines) > $maxLines) {
+                                    echo implode("\n", array_slice($lines, 0, $maxLines));
+                                    echo '<span class="read-more"><a href="#">Read more</a></span>';
+                                } 
+                                else {
+                                    echo $paragraph;
+                                }
+                                ?>
+                                </p>
                             <img src="{{ asset('site/uploads/product/'.$product->photo) }}" class="image_1">
 
                             <div class="btn_main">
