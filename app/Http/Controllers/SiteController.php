@@ -28,28 +28,36 @@ class SiteController extends Controller
     public function getAddCart(Product $product){
         $code =Str::random(6);
         $qty = 1;
-        if(Session::get('cartcode')){
-            
-            $cart = New Cart;
-            $cart->product_id = $product->id;
-            $cart->qty = $qty;
-            $cart->cost = $product->product_cost;
-            $cart->totalcost = $product->product_cost*$qty;
-            $cart->code = Session::get('cartcode');
-            $cart->save();
+        $productId = $product->id;
+        $productCost = $product->product_cost;
+
+        $cartCode = Session::get('cartcode');
+
+        $existingCart = Cart::where('code', $cartCode)
+                    ->where('product_id', $productId)
+                    ->first();
+
+        if ($existingCart) {
+        $existingCart->qty += $qty;
+        $existingCart->totalcost = $existingCart->qty * $productCost;
+        $existingCart->save();
         }
-        else{
-            $cart = New Cart;
-            $cart->product_id = $product->id;
-            $cart->qty = $qty;
-            $cart->cost = $product->product_cost;
-            $cart->totalcost = $product->product_cost*$qty;
-            $cart->code = $code;
-            $cart->save();
-            Session::put('cartcode', $code);
-        }
-        return redirect()->route('getCart');
-        
+        else {
+            $newCart = new Cart;
+            $newCart->product_id = $productId;
+            $newCart->qty = $qty;
+            $newCart->cost = $productCost;
+            $newCart->totalcost = $productCost * $qty;
+            $newCart->code = $cartCode;
+            $newCart->save();
+
+        if (!$cartCode) {
+            $newCartCode = Str::random(6);
+            Session::put('cartcode', $newCartCode);
+    }
+}
+
+return redirect()->route('getCart');
     }
     public function getCart(){
         if(Session::get('cartcode'))
