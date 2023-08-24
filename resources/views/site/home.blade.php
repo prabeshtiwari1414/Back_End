@@ -125,7 +125,7 @@
                             <h4 class="bursh_text">{{$product->product_title}}</h4>
                             <p class="lorem_text">
                                 <?php
-                                $paragraph = $cpa->product_details; // Replace with the actual field containing your paragraph
+                                $paragraph = $product->product_details; // Replace with the actual field containing your paragraph
                                 $maxLines = 2;
 
                                 $lines = explode("\n", wordwrap($paragraph, 70)); // Adjust the character limit as needed

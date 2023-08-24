@@ -134,41 +134,7 @@ return redirect()->route('getCart');
         else{
             abort(404);
         }
-    }
-    public function postBillingAddress(Request $request){
-        $cartcode = Session::get('id');
-        $request->validate([
-            'firstname'=> 'required',
-            'secondname'=> 'required',
-            'email'=> 'required',
-            'state'=> 'required',
-            
-            'city'=> 'required',
-            'zipcode'=> 'required',
-            'paymethod'=> 'required | in:esewa,cod',
-            
-        ]);
-        $firstname      =$request->firstname;    
-        $secondname     =$request->secondname;    
-        $email          =$request->email;    
-        $state          =$request->state;    
-        $city           =$request->city;    
-        $zipcode        =$request->zipcode;    
-        $paymethod      =$request->paymethod;
-
-
-        $bill = new Billingaddress;
-
-
-        $bill->firstname            = $firstname;
-        $bill->secondname           = $secondname;
-        $bill->email                = $email;
-        $bill->charge                = $state;
-        $bill->city                 = $city;
-        $bill->zipcode              = $zipcode;
-        $bill->paymethod            = $paymethod;
-        $bill->save();
-
+        
         if(Session::get('cartcode'))
         {
             $cartcode = Session::get('cartcode');
@@ -176,27 +142,26 @@ return redirect()->route('getCart');
         }
         else{
             abort(404);
-        
+            
         }
-
+        
         // return $carts;
         foreach ($carts as $key => $value) {
             $id = $value->id;
         }
         if(Cart::hasCartItem(Session::get('cartcode'))){
             $cartcode = Session::get('cartcode');
-        $data =[
-            'carts' => Cart::where('code', $cartcode)->get()
-        ];
-        dd('item order');
+            $data =[
+                'carts' => Cart::where('code', $cartcode)->get()
+            ];
+            dd('item order');
         }
         else{
             abort(404);
         }
-       
+        
     }
+}
     
   
    
-
-}
