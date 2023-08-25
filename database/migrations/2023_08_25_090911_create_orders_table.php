@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('name');
             $table->string('email');
             $table->string('state_id');
-            $table->integer('city');
+            $table->string('city');
             $table->integer('zipcode');
             $table->enum('payment_type',['esewa','cod'])->default('cod');
             $table->enum('payment_status',['y','n'])->default('n');

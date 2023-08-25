@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Billingaddress;
 use App\Models\Shippingcharge;
+use App\Models\Order;
 use Session;
 
 class SiteController extends Controller
@@ -160,6 +161,41 @@ return redirect()->route('getCart');
             abort(404);
         }
         
+    }
+    public function postBillingAddress(Request $request){
+        $name = $request->input('firstname')." ".$request->input('secondname');
+        $email = $request->input('email');
+        // $state_id = $scg->input('id');
+        $city = $request->input('city');
+        $zipcode = $request->input('zipcode');
+        $paymethod = $request->input('paymethod');
+        if($paymethod =='cod'){
+            $payment_status = 'n';
+        }
+        else{
+            $payment_status = 'y';
+        }
+        $cartcode = Session::get('cartcode');
+        $subtotal = session('subtotal');
+        $grandTotal = session('grandTotal');
+        $state_id = $request->input('state_id');
+        
+        $shippingCharge = ShippingCharge::where('id', $state_id)->value('shipping_charge');
+
+        $order = new Order;
+        $order->name                            = $name;
+        $order->email                           = $email;
+        $order->city                            = $city;
+        $order->zipcode                         = $zipcode;
+        $order->payment_type                    = $paymethod;
+        $order->payment_status                  = $payment_status;
+        $order->cartcode                        = $cartcode;
+        $order->totalamount                     = $subtotal;
+        $order->grandTotal                      = $grandTotal;
+        $order->state_id                        = $state_id;
+        $order->shippingamount                  = $shippingCharge;
+        $order->save();
+        dd('order success');
     }
 }
     

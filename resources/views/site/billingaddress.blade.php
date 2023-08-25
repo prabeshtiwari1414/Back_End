@@ -7,11 +7,13 @@
                 <br /> <br />
                 @foreach ($carts as $tabledata)
                 @endforeach
+                @foreach($shipping as $crgid)
+                @endforeach
                 <a  href="{{route('getCart')}}" class="text-secondary">Carts</a> >
                 <a  href="{{route('getBillingAddress', $tabledata->id)}}" >Billing Address</a> >
                  <br> <br>
                 <h3>Billing Adderess</h3><br>
-                <form action="{{route('postBillingAddress', $tabledata->id)}}" method="POST">
+                <form action="{{route('postBillingAddress',  $crgid->id )}}" method="POST">
                 @csrf
                 <div class="container">
                     <div class="row">
@@ -35,10 +37,9 @@
                           </div>
                           <div class="col-md-3">
                             <label  >State</label>
-                            <select class="shipping1 form-select"  name="state" required>
-                              <option value="">Select Your State</option>
+                            <select class="shipping1 form-select"  name="state_id" required>
                               @foreach($shipping as $crg)
-                              <option value="{{$crg->shipping_charge}}">{{$crg->state}} @NRS {{$crg->shipping_charge}}</option>
+                              <option  value="{{$crg->id}}" data-charge="{{$crg->shipping_charge}}">{{$crg->state}} @NRS {{$crg->shipping_charge}}</option>
                               @endforeach
                               
                             </select>
@@ -65,9 +66,8 @@
                           </div>
                         </div>
                                 
-                      </form>
-                      <div class="col-md-5">
-                               @foreach ($carts as $tabledata)
+                        <div class="col-md-5">
+                          @foreach ($carts as $tabledata)
                               @endforeach
                                 <strong><h3><b>Item OverViews</b></h3></strong> <br>
                                 <div class="d-flex row mb-10">
@@ -89,40 +89,44 @@
                                           <div>Shipping : </div>
                                           <div>Estimated Tax(13%): </div>
                                           <div><strong>GrandTotal</strong> : </div>
-                                    </div>
-                                    <div class="paymentprice ">
-                                        @php
+                                        </div>
+                                        <div class="paymentprice ">
+                                          @php
                                           $subtotal = 0; // Initialize the grand total variable
                                           $shippingCharge = 0;
                                           $taxPercentage = 0.13;
                                           $grandTotal = 0;
-                                        @endphp
+                                          @endphp
                           
-                                       @foreach ($carts as $tabledata)
-                                          @php
+                                         @foreach ($carts as $tabledata)
+                                            @php
                                               $productinfo = App\Models\Product::where('id', $tabledata->product_id)->first();
                                               $itemCost = $tabledata->totalcost;
                                               $subtotal += $itemCost;                                                           
-                                          @endphp
+                                              @endphp
                                         @endforeach
-                                                <div>{{ $subtotal }}</div>
-                                                
-                                                <div class="shipping-charge">{{ $shippingCharge }}</div>
-                                                @php
-                                                    $taxAmount = $subtotal * $taxPercentage;
-                                                    $grandTotal = $subtotal + $shippingCharge + $taxAmount;
-                                                @endphp
+                                        <div>{{ $subtotal }}</div>
+                                        
+                                        <div class="shipping-charge">{{ $shippingCharge }}</div>
+                                                    @php
+                                                      $taxAmount = $subtotal * $taxPercentage;
+                                                      $grandTotal = $subtotal + $shippingCharge + $taxAmount;
+                                                    @endphp
                                                 <span class="tax-amount">{{ $taxAmount }}</span><br>
                                                 <strong><span class="grand-total">{{ $grandTotal }}</span></strong>
-                                                 
+                                                @php
+                                                  session(['subtotal' => $subtotal]);                                                  
+                                                  session(['grandTotal' => $grandTotal]);
+                                                @endphp
                                               </div>
-                                              </ul>
+                                            </ul>
                                           </div>
                                           
-                          
-                                </table>
-                            </div>
-                            
+                                          
+                                        </table>
+                                      </div>
+                                      
+                                    </form>
                           </div>
                           </div>
                           </div>
@@ -141,7 +145,7 @@
   $('.shipping-charge').text(newship);
 
   $('.shipping1').change(function() {
-      var selectedShippingCharge = $(this).val();
+      var selectedShippingCharge = parseFloat($(this).find(':selected').data('charge'));
       $('.shipping-charge').text(selectedShippingCharge);
 
       // Calculate and update tax amount and grand total
@@ -149,9 +153,15 @@
       var taxPercentage = {{ $taxPercentage }};
       var taxAmount = subtotal * taxPercentage;
       var grandTotal = subtotal + parseFloat(selectedShippingCharge) + taxAmount;
-
+      
       $('.tax-amount').text(taxAmount.toFixed(2));
       $('.grand-total').text(grandTotal.toFixed(2));
+
+
+      
+
+
+
   });
     });
 </script>
