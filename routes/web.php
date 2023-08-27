@@ -27,7 +27,21 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\SiteController;
 
 
-            
+Route::get('/esewa', [SiteController::class, 'getSewa'])->name('getSewa');
+Route::get('/esewa/success', function(){
+	dd('payment success');
+});
+
+Route::get('/esewa/fail', function(){
+	dd('payment fail');
+});
+
+
+
+
+
+
+
 Route::get('/', [SiteController::class, 'getHome'])->name('getHome');
 Route::get('/product/views', [SiteController::class, 'getProduct'])->name('getProduct');
 Route::get('/product/cart/{product}', [SiteController::class, 'getAddCart'])->name('getAddCart');

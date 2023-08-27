@@ -116,6 +116,7 @@
                                                 <strong><span class="grand-total">{{ $grandTotal }}</span></strong>
                                                 @php
                                                   session(['subtotal' => $subtotal]);                                                  
+                                                  session(['taxAmount' => $taxAmount]);                                                  
                                                   session(['grandTotal' => $grandTotal]);
                                                 @endphp
                                               </div>

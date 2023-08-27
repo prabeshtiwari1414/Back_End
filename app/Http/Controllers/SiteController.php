@@ -10,6 +10,8 @@ use App\Models\Billingaddress;
 use App\Models\Shippingcharge;
 use App\Models\Order;
 use Session;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 
 class SiteController extends Controller
 {
@@ -172,11 +174,13 @@ return redirect()->route('getCart');
         if($paymethod =='cod'){
             $payment_status = 'n';
         }
-        else{
+        elseif($paymethod == 'esewa')
+        {
             $payment_status = 'y';
         }
         $cartcode = Session::get('cartcode');
         $subtotal = session('subtotal');
+        $taxAmount = session('taxAmount');
         $grandTotal = session('grandTotal');
         $state_id = $request->input('state_id');
         
@@ -195,7 +199,40 @@ return redirect()->route('getCart');
         $order->state_id                        = $state_id;
         $order->shippingamount                  = $shippingCharge;
         $order->save();
-        dd('order success');
+        
+
+
+        if($request->input('paymethod') == 'esewa'){
+            $url = "https://uat.esewa.com.np/epay/main";
+           // dd($url);
+            $data =[
+            'amt'=> $order->totalamount,
+            'pdc'=> $shippingCharge,
+            'psc'=> 0,
+            'txAmt'=> $taxAmount,
+            'tAmt'=> $order->totalamount+$shippingCharge+$taxAmount,
+            'pid'=>$order->id,
+            'scd'=> 'EPAYTEST',
+            'su'=>'http://localhost:8000/esewa/success',
+            'fu'=>'http://localhost:8000/esewa/fail',
+                ];
+            $curl = curl_init($url);
+            // dd($curl);
+            curl_setopt($curl, CURLOPT_POST, true);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            $response = curl_exec($curl);
+            curl_close($curl);
+            return redirect()->route('getSewa');
+
+        }
+        else{
+            dd('your order has been success with COD');
+        }
+    }
+    public function getSewa(){
+        
+        return view('esewa.form');
     }
 }
     
