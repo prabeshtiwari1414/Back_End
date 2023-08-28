@@ -27,7 +27,7 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\SiteController;
 
 
-Route::get('/esewa', [SiteController::class, 'getSewa'])->name('getSewa');
+Route::get('/esewa/{orderId}', [SiteController::class, 'getSewa'])->name('getSewa');
 Route::get('/esewa/success', function(){
 	dd('payment success');
 });

@@ -38,6 +38,8 @@
                           <div class="col-md-3">
                             <label  >State</label>
                             <select class="shipping1 form-select"  name="state_id" required>
+                              <option  value="" data-charge="">Select State</option>
+
                               @foreach($shipping as $crg)
                               <option  value="{{$crg->id}}" data-charge="{{$crg->shipping_charge}}">{{$crg->state}} @NRS {{$crg->shipping_charge}}</option>
                               @endforeach
@@ -62,7 +64,7 @@
                               <label   id="paymethod" >COD</label>
                           </div>
                           <div class="col-12 mt-2 ">
-                            <button class=" btn btn-primary" type="submit">Submit form</button>
+                            <button class=" btn btn-primary" type="submit">Order Now</button>
                           </div>
                         </div>
                                 
@@ -97,7 +99,7 @@
                                           $taxPercentage = 0.13;
                                           $grandTotal = 0;
                                           @endphp
-                          
+
                                          @foreach ($carts as $tabledata)
                                             @php
                                               $productinfo = App\Models\Product::where('id', $tabledata->product_id)->first();

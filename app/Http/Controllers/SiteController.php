@@ -195,6 +195,7 @@ return redirect()->route('getCart');
         $order->payment_status                  = $payment_status;
         $order->cartcode                        = $cartcode;
         $order->totalamount                     = $subtotal;
+        $order->taxamount                       = $taxAmount;
         $order->grandTotal                      = $grandTotal;
         $order->state_id                        = $state_id;
         $order->shippingamount                  = $shippingCharge;
@@ -223,16 +224,30 @@ return redirect()->route('getCart');
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             $response = curl_exec($curl);
             curl_close($curl);
-            return redirect()->route('getSewa');
+            return redirect()->route('getSewa', ['orderId' => $order->id]);
 
         }
         else{
             dd('your order has been success with COD');
         }
     }
-    public function getSewa(){
+    public function getSewa($orderId){
+        if(Cart::hasCartItem(Session::get('cartcode'))){
+            $cartcode = Session::get('cartcode');
+        $data =[
+            'carts' => Cart::where('code', $cartcode)->get()
+        ];
         
-        return view('esewa.form');
+        
+        $order = Order::find($orderId);
+        $orderId =[
+            'order' => $order
+        ];
+                 return view('esewa.form', $data, $orderId);
+        }
+        else{
+            abort(404);
+        }
     }
 }
     
