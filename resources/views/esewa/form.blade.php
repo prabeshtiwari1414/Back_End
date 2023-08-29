@@ -11,23 +11,54 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h3>Order Confirmation</h3>
+                    <h3><b>Order Confirmation <span class="text-success">eSewa</span> </b></h3>
                     @if ($order)
                         <div class="container">
                             <div class="row">
                                 <div class="col-6">
-                                    <p><strong>Personal Information:</strong></p>
-                                    <p>Full Name: {{ $order->name }}</p>
-                                    <p>Email: {{ $order->email }}</p>
-                                    <p>City: {{ $order->city }}</p>
-                                    <p>Zip: {{ $order->zipcode }}</p>
+                                    <p><strong><h4>Personal Information</h4></strong></p>
+                                    <div class="d-flex">
+                                        <div class="perinfo col-6">
+                                            <p>Fullname: </p>
+                                            <p>E-mail: </p>
+                                            <p>City: </p>
+                                            <p>Zipcode: </p>
+                                        </div>
+                                        <div class="preinfo col-6">
+                                            <p><b>{{ $order->name }}</b></p>
+                                            <p><b>{{ $order->email }}</b></p>
+                                            <p><b>{{ $order->city }}</b></p>
+                                            <p><b>{{ $order->zipcode }}</b></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <p><strong>Order Summary:</strong></p>
-                                    <p>Subtotal: NRS {{ $order->totalamount }}</p>
-                                    <p>Shipping Charge: NRS {{ $order->shippingamount }}</p>
-                                    <p>Tax Amount: NRS {{ $order->taxamount}}</p>
-                                    <p><strong>Grand Total: NRS {{ $order->grandtotal }}</strong></p>
+                                    <table>
+                                        <p><strong><h4>Order Summary</h4></strong></p> <br>
+                                          <ul class="d-flex">
+                                          <div class="paytable col-md-10">
+                                              
+                                                <div>SubTotal : </div>
+                                                <div>Shipping : </div>
+                                                <div>Estimated Tax(13%): </div>
+                                                <div><strong>GrandTotal</strong> : </div>
+                                              </div>
+                                              <div class="paymentprice ">
+                                                
+      
+                                               
+                                              <div>{{ $order->totalamount }}</div>
+                                              
+                                              <div>{{$order->shippingamount}}</div>
+                                                         
+                                                      <span class="tax-amount">{{ $order->taxamount }}</span><br>
+                                                      <strong><span class="grand-total">{{ $order->grandtotal }}</span></strong>
+                                                     
+                                                    </div>
+                                                  </ul>
+                                                </div>
+                                                
+                                              </table>
                                     <form action="https://uat.esewa.com.np/epay/main" method="POST" class="text-align-center align-item-center">
                                         @php
                                             $grandTotalFloat = floatval($order->grandtotal);
@@ -35,22 +66,18 @@
                                             $shippingAmountFloat = floatval($order->shippingamount);
                                             $taxAmountFloat = floatval($order->taxamount);
                                              $pid = rand(1, 999999); // Generates a random integer between 100000 and 999999
-
-
                                         @endphp
-                                        <input value="{{$grandTotalFloat}}" name="tAmt" type="hidden">{{-- amt+txamt+psc+pdc --}}
-                                        <input value="{{$totalAmountFloat}}" name="amt" type="hidden"> {{-- product amount --}}
-                                        <input value="{{$taxAmountFloat}}" name="txAmt" type="hidden"> {{-- Tax amount --}}
-                                        <input value="0" name="psc" type="hidden"> {{-- service charge amount --}}
-                                        <input value="{{$shippingAmountFloat}}" name="pdc" type="hidden"> {{-- delivery charge amount --}}
+                                        <input value="100" name="tAmt" type="hidden">{{-- amt+txamt+psc+pdc --}}
+                                        <input value="90" name="amt" type="hidden"> {{-- product amount --}}
+                                        <input value="5" name="txAmt" type="hidden"> {{-- Tax amount --}}
+                                        <input value="3" name="psc" type="hidden"> {{-- service charge amount --}}
+                                        <input value="2" name="pdc" type="hidden"> {{-- delivery charge amount --}}
                                         <input value="EPAYTEST" name="scd" type="hidden"> {{-- merchant code which is provided by esewa --}}
                                         <input value="{{$pid}}" name="pid" type="hidden">
-                                        <p>{{$pid}}</p>
-                                        
                                         <input value="http://localhost:8000/esewa/success" type="hidden" name="su">
                                         <input value="http://localhost:8000/esewa/fail" type="hidden" name="fu">
                                 
-                                        <button class=" btn btn-primary" type="submit">Pay Now</button>
+                                        <button class=" btn btn-primary mt-5" type="submit">Pay Now</button>
                                     </form>
                                 </div>
                             </div>
@@ -63,6 +90,7 @@
             </div>
         </div>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>
