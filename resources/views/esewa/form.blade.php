@@ -67,11 +67,11 @@
                                             $taxAmountFloat = floatval($order->taxamount);
                                              $pid = rand(1, 999999); // Generates a random integer between 100000 and 999999
                                         @endphp
-                                        <input value="100" name="tAmt" type="hidden">{{-- amt+txamt+psc+pdc --}}
-                                        <input value="90" name="amt" type="hidden"> {{-- product amount --}}
-                                        <input value="5" name="txAmt" type="hidden"> {{-- Tax amount --}}
-                                        <input value="3" name="psc" type="hidden"> {{-- service charge amount --}}
-                                        <input value="2" name="pdc" type="hidden"> {{-- delivery charge amount --}}
+                                        <input value="{{$grandTotalFloat}}" name="tAmt" type="hidden">{{-- amt+txamt+psc+pdc --}}
+                                        <input value="{{$totalAmountFloat}}" name="amt" type="hidden"> {{-- product amount --}}
+                                        <input value="{{$taxAmountFloat}}" name="txAmt" type="hidden"> {{-- Tax amount --}}
+                                        <input value="0" name="psc" type="hidden"> {{-- service charge amount --}}
+                                        <input value="{{$shippingAmountFloat}}" name="pdc" type="hidden"> {{-- delivery charge amount --}}
                                         <input value="EPAYTEST" name="scd" type="hidden"> {{-- merchant code which is provided by esewa --}}
                                         <input value="{{$pid}}" name="pid" type="hidden">
                                         <input value="http://localhost:8000/esewa/success" type="hidden" name="su">

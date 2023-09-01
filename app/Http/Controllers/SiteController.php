@@ -196,9 +196,9 @@ return redirect()->route('getCart');
         $order->cartcode                        = $cartcode;
         $order->totalamount                     = $subtotal;
         $order->taxamount                       = $taxAmount;
-        $order->grandTotal                      = $grandTotal;
         $order->state_id                        = $state_id;
         $order->shippingamount                  = $shippingCharge;
+        $order->grandTotal                      = $subtotal+$taxAmount+$shippingCharge;
         $order->save();
         
 

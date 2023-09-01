@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('cartcode');
             $table->integer('totalamount');
             $table->integer('shippingamount');
-            $table->integer('taxamount');
-            $table->integer('grandtotal');
+            $table->decimal('taxamount');
+            $table->decimal('grandtotal');
             $table->timestamps();
         });
     }
