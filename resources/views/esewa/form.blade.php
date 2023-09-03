@@ -39,8 +39,8 @@
                                           <div class="paytable col-md-10">
                                               
                                                 <div>SubTotal : </div>
-                                                <div>Shipping : </div>
                                                 <div>Estimated Tax(13%): </div>
+                                                <div>Shipping : </div>
                                                 <div><strong>GrandTotal</strong> : </div>
                                               </div>
                                               <div class="paymentprice ">
@@ -49,11 +49,10 @@
                                                
                                               <div>{{ $order->totalamount }}</div>
                                               
+                                              <span class="tax-amount">{{ $order->taxamount }}</span><br>
                                               <div>{{$order->shippingamount}}</div>
                                                          
-                                                      <span class="tax-amount">{{ $order->taxamount }}</span><br>
                                                       <strong><span class="grand-total">{{ $order->grandtotal }}</span></strong>
-                                                     
                                                     </div>
                                                   </ul>
                                                 </div>

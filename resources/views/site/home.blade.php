@@ -106,6 +106,16 @@
                 
             </div>
         </div>
+        @if(Session::has('success'))
+            <div class="row mt-2" style="text-align: center;">
+
+                 <div class="col-md-12">
+                    <div class="alert bg-success text-dark" role="alert">
+                         <b>Successfully Order</b>
+                     </div>
+                 </div>
+            </div>
+        @endif
     </div>
     <!-- banner section end -->
     <!-- product section start -->

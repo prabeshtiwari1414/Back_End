@@ -36,6 +36,8 @@ Route::get('/esewa/fail', function(){
 	dd('payment fail');
 });
 
+Route::get('/cod/{orderId}', [SiteController::class, 'getCod'])->name('getCod');
+Route::get('/codsuccess/{orderId}', [SiteController::class, 'CodSuccess'])->name('CodSuccess');
 
 
 

@@ -228,7 +228,8 @@ return redirect()->route('getCart');
 
         }
         else{
-            dd('your order has been success with COD');
+            return redirect()->route('getCod', ['orderId' => $order->id]);
+            
         }
     }
     public function getSewa($orderId){
@@ -249,6 +250,27 @@ return redirect()->route('getCart');
             abort(404);
         }
     }
+    public function getCod($orderId){
+        if(Cart::hasCartItem(Session::get('cartcode'))){
+            $cartcode = Session::get('cartcode');
+        $data =[
+            'carts' => Cart::where('code', $cartcode)->get()
+        ];
+        
+        
+        $order = Order::find($orderId);
+        $orderId =[
+            'order' => $order
+        ];
+            return redirect()->route('getHome')->with('success', 'Order  successfully');
+               
+        }
+        else{
+            abort(404);
+        }
+    }
+    
+   
 }
     
   

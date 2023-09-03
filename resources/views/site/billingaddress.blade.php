@@ -88,8 +88,8 @@
                                     <div class="paytable col-md-10">
                                         
                                           <div>SubTotal : </div>
-                                          <div>Shipping : </div>
                                           <div>Estimated Tax(13%): </div>
+                                          <div>Shipping : </div>
                                           <div><strong>GrandTotal</strong> : </div>
                                         </div>
                                         <div class="paymentprice ">
@@ -109,12 +109,12 @@
                                         @endforeach
                                         <div>{{ $subtotal }}</div>
                                         
-                                        <div class="shipping-charge">{{ $shippingCharge }}</div>
-                                                    @php
-                                                      $taxAmount = $subtotal * $taxPercentage;
-                                                      $grandTotal = $subtotal + $shippingCharge + $taxAmount;
-                                                    @endphp
+                                        @php
+                                            $taxAmount = $subtotal * $taxPercentage;
+                                            $grandTotal = $subtotal + $shippingCharge + $taxAmount;
+                                         @endphp
                                                 <span class="tax-amount">{{ $taxAmount }}</span><br>
+                                                <div class="shipping-charge">{{ $shippingCharge }}</div>
                                                 <strong><span class="grand-total">{{ $grandTotal }}</span></strong>
                                                 @php
                                                   session(['subtotal' => $subtotal]);                                                  
@@ -159,11 +159,6 @@
       
       $('.tax-amount').text(taxAmount.toFixed(2));
       $('.grand-total').text(grandTotal.toFixed(2));
-
-
-      
-
-
 
   });
     });
