@@ -37,7 +37,7 @@ Route::get('/esewa/fail', function(){
 });
 
 Route::get('/cod/{orderId}', [SiteController::class, 'getCod'])->name('getCod');
-Route::get('/codsuccess/{orderId}', [SiteController::class, 'CodSuccess'])->name('CodSuccess');
+Route::get('/codsuccess/{cart}', [SiteController::class, 'CodSuccess'])->name('CodSuccess');
 
 
 

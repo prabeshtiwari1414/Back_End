@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\Cart;
-use App\Models\Billingaddress;
 use App\Models\Shippingcharge;
 use App\Models\Order;
 use Session;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Http;
+use App\Mail\SampleMail;
+use Mail;
 
 class SiteController extends Controller
 {
@@ -228,6 +229,35 @@ return redirect()->route('getCart');
 
         }
         else{
+            $content = [
+                'subject' => 'This is the mail subject',
+                'body' => 'Hi '. $request->input('firstname') .",". "<br />".
+                        "We are happy to share that item(s) from your order has been shipped and it is on the way to the last mile hub."."<br /><br /><br />".
+                        
+                        
+                        '<div style="padding-top: 20px;"></div>'.
+                        "<b>Delivery Details</b>"."<br />".
+                        '<div style="padding-top: 20px;"></div>'.
+
+
+                        "Name:" .$name."<br />".
+                        "Address:" .$city.",(".$zipcode.")"."<br />".
+                        "Email:"   .$email."<br />".
+
+
+                        '<div style="padding-top: 20px;"></div>'.
+                        "<b>Order Detalils</b>"  ."<br />".
+                        '<div style="padding-top: 20px;"></div>'.
+
+
+                        "Order Total:"    .$subtotal."<br />"  .
+                        "Shipping Fee:"    .$shippingCharge."<br />".  
+                        "Tax(13%):"    .$taxAmount."<br />".  
+                        "Total Payment (Tax Incl):"    .$order->grandTotal."<br />".  
+                        "Paid By: COD"
+                         
+            ];
+            Mail::to($request->input('email'))->send(new SampleMail($content));
             return redirect()->route('getCod', ['orderId' => $order->id]);
             
         }
@@ -253,9 +283,7 @@ return redirect()->route('getCart');
     public function getCod($orderId){
         if(Cart::hasCartItem(Session::get('cartcode'))){
             $cartcode = Session::get('cartcode');
-        $data =[
-            'carts' => Cart::where('code', $cartcode)->get()
-        ];
+        
         
         
         $order = Order::find($orderId);
